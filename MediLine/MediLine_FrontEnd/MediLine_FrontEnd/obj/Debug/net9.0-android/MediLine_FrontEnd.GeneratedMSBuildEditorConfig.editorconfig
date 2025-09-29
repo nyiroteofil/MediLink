@@ -1,4 +1,9 @@
 is_global = true
+build_property.EnableAotAnalyzer = 
+build_property.EnableSingleFileAnalyzer = true
+build_property.EnableTrimAnalyzer = false
+build_property.IncludeAllContentForSelfExtract = 
+build_property.MvvmToolkitEnableINotifyPropertyChangingSupport = true
 build_property.TargetFramework = net9.0-android
 build_property.TargetPlatformMinVersion = 
 build_property.UsingMicrosoftNETSdkWeb = 
@@ -13,3 +18,93 @@ build_property.EnableComHosting =
 build_property.EnableGeneratedComInterfaceComImportInterop = 
 build_property.EffectiveAnalysisLevelStyle = 9.0
 build_property.EnableCodeStyleSeverity = 
+
+[D:/Szakdoogozat_BSc/MediLine/MediLine_FrontEnd/MediLine_FrontEnd/App.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.App.xaml
+build_metadata.AdditionalFiles.TargetPath = App.xaml
+build_metadata.AdditionalFiles.RelativePath = App.xaml
+
+[D:/Szakdoogozat_BSc/MediLine/MediLine_FrontEnd/MediLine_FrontEnd/AppShell.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.AppShell.xaml
+build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
+build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
+
+[D:/Szakdoogozat_BSc/MediLine/MediLine_FrontEnd/MediLine_FrontEnd/Pages/Controls/AddButton.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.Controls.AddButton.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\Controls\AddButton.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\Controls\AddButton.xaml
+
+[D:/Szakdoogozat_BSc/MediLine/MediLine_FrontEnd/MediLine_FrontEnd/Pages/Controls/CategoryChart.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.Controls.CategoryChart.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\Controls\CategoryChart.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\Controls\CategoryChart.xaml
+
+[D:/Szakdoogozat_BSc/MediLine/MediLine_FrontEnd/MediLine_FrontEnd/Pages/Controls/ProjectCardView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.Controls.ProjectCardView.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\Controls\ProjectCardView.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\Controls\ProjectCardView.xaml
+
+[D:/Szakdoogozat_BSc/MediLine/MediLine_FrontEnd/MediLine_FrontEnd/Pages/Controls/TagView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.Controls.TagView.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\Controls\TagView.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\Controls\TagView.xaml
+
+[D:/Szakdoogozat_BSc/MediLine/MediLine_FrontEnd/MediLine_FrontEnd/Pages/Controls/TaskView.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.Controls.TaskView.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\Controls\TaskView.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\Controls\TaskView.xaml
+
+[D:/Szakdoogozat_BSc/MediLine/MediLine_FrontEnd/MediLine_FrontEnd/Pages/MainPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.MainPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\MainPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\MainPage.xaml
+
+[D:/Szakdoogozat_BSc/MediLine/MediLine_FrontEnd/MediLine_FrontEnd/Pages/ManageMetaPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.ManageMetaPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\ManageMetaPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\ManageMetaPage.xaml
+
+[D:/Szakdoogozat_BSc/MediLine/MediLine_FrontEnd/MediLine_FrontEnd/Pages/ProjectDetailPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.ProjectDetailPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\ProjectDetailPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\ProjectDetailPage.xaml
+
+[D:/Szakdoogozat_BSc/MediLine/MediLine_FrontEnd/MediLine_FrontEnd/Pages/ProjectListPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.ProjectListPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\ProjectListPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\ProjectListPage.xaml
+
+[D:/Szakdoogozat_BSc/MediLine/MediLine_FrontEnd/MediLine_FrontEnd/Pages/TaskDetailPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.TaskDetailPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\TaskDetailPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\TaskDetailPage.xaml
+
+[D:/Szakdoogozat_BSc/MediLine/MediLine_FrontEnd/MediLine_FrontEnd/Resources/Styles/AppStyles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Resources.Styles.AppStyles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\AppStyles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\AppStyles.xaml
+
+[D:/Szakdoogozat_BSc/MediLine/MediLine_FrontEnd/MediLine_FrontEnd/Resources/Styles/Colors.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Resources.Styles.Colors.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Colors.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Colors.xaml
+
+[D:/Szakdoogozat_BSc/MediLine/MediLine_FrontEnd/MediLine_FrontEnd/Resources/Styles/Styles.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Resources.Styles.Styles.xaml
+build_metadata.AdditionalFiles.TargetPath = Resources\Styles\Styles.xaml
+build_metadata.AdditionalFiles.RelativePath = Resources\Styles\Styles.xaml
