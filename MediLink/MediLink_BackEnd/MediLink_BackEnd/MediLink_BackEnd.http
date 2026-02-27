@@ -1,0 +1,6 @@
+@MediLink_BackEnd_HostAddress = http://localhost:5037
+
+GET {{MediLink_BackEnd_HostAddress}}/weatherforecast/
+Accept: application/json
+
+###
