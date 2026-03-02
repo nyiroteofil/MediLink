@@ -1,7 +1,52 @@
 {
   "Version": 1,
   "WorkspaceRootPath": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\",
-  "Documents": [],
+  "Documents": [
+    {
+      "AbsoluteMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|d:\\szakdoogozat_bsc\\medilink\\medilink_backend\\medilink_backend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|solutionrelative:medilink_backend\\models\\user.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|d:\\szakdoogozat_bsc\\medilink\\medilink_backend\\medilink_backend\\models\\datasheet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|solutionrelative:medilink_backend\\models\\datasheet.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|d:\\szakdoogozat_bsc\\medilink\\medilink_backend\\medilink_backend\\models\\medication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|solutionrelative:medilink_backend\\models\\medication.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|d:\\szakdoogozat_bsc\\medilink\\medilink_backend\\medilink_backend\\data\\medilinkcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|solutionrelative:medilink_backend\\data\\medilinkcontext.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|d:\\szakdoogozat_bsc\\medilink\\medilink_backend\\medilink_backend\\models\\institution.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|solutionrelative:medilink_backend\\models\\institution.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|d:\\szakdoogozat_bsc\\medilink\\medilink_backend\\medilink_backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|solutionrelative:medilink_backend\\appsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|d:\\szakdoogozat_bsc\\medilink\\medilink_backend\\medilink_backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|solutionrelative:medilink_backend\\program.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|d:\\szakdoogozat_bsc\\medilink\\medilink_backend\\medilink_backend\\medilink_backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|",
+      "RelativeMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|solutionrelative:medilink_backend\\medilink_backend.csproj||{FA3CD31E-987B-443A-9B81-186104E8DAC1}|"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|d:\\szakdoogozat_bsc\\medilink\\medilink_backend\\medilink_backend\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|solutionrelative:medilink_backend\\controllers\\weatherforecastcontroller.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|d:\\szakdoogozat_bsc\\medilink\\medilink_backend\\medilink_backend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}",
+      "RelativeMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|solutionrelative:medilink_backend\\properties\\launchsettings.json||{90A6B3A7-C1A3-4009-A288-E2FF89E96FA0}"
+    },
+    {
+      "AbsoluteMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|d:\\szakdoogozat_bsc\\medilink\\medilink_backend\\medilink_backend\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}",
+      "RelativeMoniker": "D:0:0:{0CB70955-EEE1-4696-96B8-B7D61C19731F}|MediLink_BackEnd\\MediLink_BackEnd.csproj|solutionrelative:medilink_backend\\weatherforecast.cs||{A6C744A8-0E4A-4FC6-886A-064283054674}"
+    }
+  ],
   "DocumentGroupContainers": [
     {
       "Orientation": 1,
@@ -9,11 +54,145 @@
       "DocumentGroups": [
         {
           "DockedHeight": 200,
-          "SelectedChildIndex": -1,
+          "SelectedChildIndex": 1,
           "Children": [
             {
               "$type": "Bookmark",
               "Name": "ST:128:0:{116d2292-e37d-41cd-a077-ebacac4c8cc4}"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 0,
+              "Title": "User.cs",
+              "DocumentMoniker": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\Models\\User.cs",
+              "RelativeDocumentMoniker": "MediLink_BackEnd\\Models\\User.cs",
+              "ToolTip": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\Models\\User.cs",
+              "RelativeToolTip": "MediLink_BackEnd\\Models\\User.cs",
+              "ViewState": "AgIAAB0AAAAAAAAAAAAAwDQAAAAvAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-02T09:11:49.799Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 4,
+              "Title": "Institution.cs",
+              "DocumentMoniker": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\Models\\Institution.cs",
+              "RelativeDocumentMoniker": "MediLink_BackEnd\\Models\\Institution.cs",
+              "ToolTip": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\Models\\Institution.cs",
+              "RelativeToolTip": "MediLink_BackEnd\\Models\\Institution.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAcAAAAxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T20:18:29.244Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 1,
+              "Title": "DataSheet.cs",
+              "DocumentMoniker": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\Models\\DataSheet.cs",
+              "RelativeDocumentMoniker": "MediLink_BackEnd\\Models\\DataSheet.cs",
+              "ToolTip": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\Models\\DataSheet.cs",
+              "RelativeToolTip": "MediLink_BackEnd\\Models\\DataSheet.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAAAtAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T20:05:16.413Z",
+              "EditorCaption": ""
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 6,
+              "Title": "Program.cs",
+              "DocumentMoniker": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\Program.cs",
+              "RelativeDocumentMoniker": "MediLink_BackEnd\\Program.cs",
+              "ToolTip": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\Program.cs",
+              "RelativeToolTip": "MediLink_BackEnd\\Program.cs",
+              "ViewState": "AgIAAAkAAAAAAAAAAAAQwBcAAAALAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-28T15:23:17.689Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 2,
+              "Title": "Medication.cs",
+              "DocumentMoniker": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\Models\\Medication.cs",
+              "RelativeDocumentMoniker": "MediLink_BackEnd\\Models\\Medication.cs",
+              "ToolTip": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\Models\\Medication.cs",
+              "RelativeToolTip": "MediLink_BackEnd\\Models\\Medication.cs",
+              "ViewState": "AgIAAAMAAAAAAAAAAAAAAB8AAAAhAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T16:45:40.971Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 3,
+              "Title": "MediLinkContext.cs",
+              "DocumentMoniker": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\Data\\MediLinkContext.cs",
+              "RelativeDocumentMoniker": "MediLink_BackEnd\\Data\\MediLinkContext.cs",
+              "ToolTip": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\Data\\MediLinkContext.cs",
+              "RelativeToolTip": "MediLink_BackEnd\\Data\\MediLinkContext.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAwAAABXAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-03-01T17:40:53.754Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 5,
+              "Title": "appsettings.json",
+              "DocumentMoniker": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\appsettings.json",
+              "RelativeDocumentMoniker": "MediLink_BackEnd\\appsettings.json",
+              "ToolTip": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\appsettings.json",
+              "RelativeToolTip": "MediLink_BackEnd\\appsettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAIAAABxAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-28T15:07:37.435Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 7,
+              "Title": "MediLink_BackEnd.csproj",
+              "DocumentMoniker": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\MediLink_BackEnd.csproj",
+              "RelativeDocumentMoniker": "MediLink_BackEnd\\MediLink_BackEnd.csproj",
+              "ToolTip": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\MediLink_BackEnd.csproj",
+              "RelativeToolTip": "MediLink_BackEnd\\MediLink_BackEnd.csproj",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000758|",
+              "WhenOpened": "2026-03-01T16:43:43.466Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 9,
+              "Title": "launchSettings.json",
+              "DocumentMoniker": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\Properties\\launchSettings.json",
+              "RelativeDocumentMoniker": "MediLink_BackEnd\\Properties\\launchSettings.json",
+              "ToolTip": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\Properties\\launchSettings.json",
+              "RelativeToolTip": "MediLink_BackEnd\\Properties\\launchSettings.json",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.001642|",
+              "WhenOpened": "2026-02-28T20:34:06.264Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 8,
+              "Title": "WeatherForecastController.cs",
+              "DocumentMoniker": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\Controllers\\WeatherForecastController.cs",
+              "RelativeDocumentMoniker": "MediLink_BackEnd\\Controllers\\WeatherForecastController.cs",
+              "ToolTip": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\Controllers\\WeatherForecastController.cs",
+              "RelativeToolTip": "MediLink_BackEnd\\Controllers\\WeatherForecastController.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-28T15:09:23.25Z"
+            },
+            {
+              "$type": "Document",
+              "DocumentIndex": 10,
+              "Title": "WeatherForecast.cs",
+              "DocumentMoniker": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\WeatherForecast.cs",
+              "RelativeDocumentMoniker": "MediLink_BackEnd\\WeatherForecast.cs",
+              "ToolTip": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\WeatherForecast.cs",
+              "RelativeToolTip": "MediLink_BackEnd\\WeatherForecast.cs",
+              "ViewState": "AgIAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAAA==",
+              "Icon": "ae27a6b0-e345-4288-96df-5eaf394ee369.000738|",
+              "WhenOpened": "2026-02-28T15:09:11.017Z"
             }
           ]
         }
