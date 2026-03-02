@@ -5178,7 +5178,7 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\Teofil\\.nuget\\packages\\": {},
+    "C:\\Users\\portr\\.nuget\\packages\\": {},
     "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
   },
   "project": {
@@ -5187,14 +5187,14 @@
       "projectUniqueName": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\MediLink_BackEnd.csproj",
       "projectName": "MediLink_BackEnd",
       "projectPath": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\MediLink_BackEnd.csproj",
-      "packagesPath": "C:\\Users\\Teofil\\.nuget\\packages\\",
+      "packagesPath": "C:\\Users\\portr\\.nuget\\packages\\",
       "outputPath": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\obj\\",
       "projectStyle": "PackageReference",
       "fallbackFolders": [
         "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
       ],
       "configFilePaths": [
-        "C:\\Users\\Teofil\\AppData\\Roaming\\NuGet\\NuGet.Config",
+        "C:\\Users\\portr\\AppData\\Roaming\\NuGet\\NuGet.Config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
         "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
       ],
@@ -5222,7 +5222,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "9.0.300"
+      "SdkAnalysisLevel": "10.0.100"
     },
     "frameworks": {
       "net9.0": {
@@ -5270,7 +5270,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\9.0.305/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.103/PortableRuntimeIdentifierGraph.json"
       }
     }
   }

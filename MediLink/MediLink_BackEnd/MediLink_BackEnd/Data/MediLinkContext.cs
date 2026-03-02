@@ -7,10 +7,12 @@ namespace MediLink_BackEnd.Data
         public MediLinkContext(DbContextOptions<MediLinkContext> options) : base(options)
         {
         }
-        public DbSet<Models.Medication> Medications { get; set; }
-        public DbSet<Models.Institution> Institutions { get; set; }
-        public DbSet<Models.PatientDataSheet> PatientDataSheets { get; set; }
-        public DbSet<Models.MedicalStaffDataSheet> MedicalStaffDataSheets { get; set; }
+        public DbSet<Models.Medication> Medication { get; set; }
+        public DbSet<Models.Institution> Institution { get; set; }
+        public DbSet<Models.PatientDataSheet> PatientDataSheet { get; set; }
+        public DbSet<Models.MedicalStaffDataSheet> MedicalStaffDataSheet { get; set; }
+        public DbSet<Models.Diagnosis> Diagnosi { get; set; }
+        public DbSet<Models.Referal> Referal { get; set; }
 
         // Specify database relationships with Fluent API
 
