@@ -1,9 +1,11 @@
 ﻿using MediLink_BackEnd.Data;
+using MediLink_BackEnd.Models;
 using Microsoft.AspNetCore.Mvc;
 
 namespace MediLink_BackEnd.Controllers
 {
-
+    [Route("api/[controller]/[action]")]
+    [ApiController]
     public class UserManagerController : Controller
     {
         private readonly MediLinkContext _dbContext;
@@ -20,7 +22,7 @@ namespace MediLink_BackEnd.Controllers
         }
 
         [HttpPatch]
-        public IActionResult ChangeUserStatus(int UserId)
+        public IActionResult ChangeUserStatus(int UserId, UserStatus status)
         {
             return Ok();
         }

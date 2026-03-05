@@ -1,5 +1,440 @@
 [
   {
+    "ContainingType": "MediLink_BackEnd.Controllers.EventManager",
+    "Method": "CreateCustomEvent",
+    "RelativePath": "api/EventManager/CreateCustomEvent",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "appointment",
+        "Type": "MediLink_BackEnd.Models.CustomEvent",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.EventManager",
+    "Method": "CreateMedicationReminder",
+    "RelativePath": "api/EventManager/CreateMedicationReminder",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "reminder",
+        "Type": "MediLink_BackEnd.Models.MedicationReminder",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.EventManager",
+    "Method": "CreateUserAppointment",
+    "RelativePath": "api/EventManager/CreateUserAppointment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "appointment",
+        "Type": "MediLink_BackEnd.Models.Appointment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.EventManager",
+    "Method": "GetUsersEvents",
+    "RelativePath": "api/EventManager/GetUsersEvents",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.EventManager",
+    "Method": "UpdateAppointment",
+    "RelativePath": "api/EventManager/UpdateAppointment",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "appointment",
+        "Type": "MediLink_BackEnd.Models.Appointment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.EventManager",
+    "Method": "UpdateReminder",
+    "RelativePath": "api/EventManager/UpdateReminder",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "appointment",
+        "Type": "MediLink_BackEnd.Models.Appointment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.MessagingController",
+    "Method": "CreateCustomExample",
+    "RelativePath": "api/Messaging/CreateCustomExample",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "appointment",
+        "Type": "MediLink_BackEnd.Models.CustomEvent",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.MessagingController",
+    "Method": "CreateGroupMessage",
+    "RelativePath": "api/Messaging/CreateGroupMessage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "reminder",
+        "Type": "MediLink_BackEnd.Models.MedicationReminder",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.MessagingController",
+    "Method": "CreateUserMessage",
+    "RelativePath": "api/Messaging/CreateUserMessage",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "appointment",
+        "Type": "MediLink_BackEnd.Models.Appointment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.MessagingController",
+    "Method": "UpdateExample",
+    "RelativePath": "api/Messaging/UpdateExample",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "appointment",
+        "Type": "MediLink_BackEnd.Models.Appointment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.MessagingController",
+    "Method": "UpdateMessage",
+    "RelativePath": "api/Messaging/UpdateMessage",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "appointment",
+        "Type": "MediLink_BackEnd.Models.Appointment",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.PatientManaggerController",
+    "Method": "AddSymptomToDiagnosis",
+    "RelativePath": "api/PatientManagger/AddSymptomToDiagnosis",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "diagnosisId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "symptom",
+        "Type": "MediLink_BackEnd.Models.Symptom",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.PatientManaggerController",
+    "Method": "ChangeDiagnosisStatus",
+    "RelativePath": "api/PatientManagger/ChangeDiagnosisStatus",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "diagnosisId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.PatientManaggerController",
+    "Method": "CreateReferal",
+    "RelativePath": "api/PatientManagger/CreateReferal",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "referal",
+        "Type": "MediLink_BackEnd.Models.Referal",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.PatientManaggerController",
+    "Method": "RemoveSymtomFromDiagnosis",
+    "RelativePath": "api/PatientManagger/RemoveSymtomFromDiagnosis",
+    "HttpMethod": "DELETE",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "diagnosisId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "symptomId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.PatientManaggerController",
+    "Method": "RespondToAppointmentRequest",
+    "RelativePath": "api/PatientManagger/RespondToAppointmentRequest",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "AppointmentId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "Accept",
+        "Type": "System.Boolean",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.PatientManaggerController",
+    "Method": "SetNewDiagnosis",
+    "RelativePath": "api/PatientManagger/SetNewDiagnosis",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "diagnosis",
+        "Type": "MediLink_BackEnd.Models.Diagnosis",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.PatientManaggerController",
+    "Method": "UpdateReferal",
+    "RelativePath": "api/PatientManagger/UpdateReferal",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "referal",
+        "Type": "MediLink_BackEnd.Models.Referal",
+        "IsRequired": true
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.UserManagerController",
+    "Method": "AddUser",
+    "RelativePath": "api/UserManager/AddUser",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.UserManagerController",
+    "Method": "ChangeUserStatus",
+    "RelativePath": "api/UserManager/ChangeUserStatus",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      },
+      {
+        "Name": "status",
+        "Type": "System.String",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.UserManagerController",
+    "Method": "UpdateUser",
+    "RelativePath": "api/UserManager/UpdateUser",
+    "HttpMethod": "PATCH",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "UserId",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
     "ContainingType": "MediLink_BackEnd.Controllers.WeatherForecastController",
     "Method": "Get",
     "RelativePath": "WeatherForecast",
