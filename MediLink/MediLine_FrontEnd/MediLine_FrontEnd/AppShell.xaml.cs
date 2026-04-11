@@ -6,11 +6,14 @@ namespace MediLine_FrontEnd
 {
     public partial class AppShell : Shell
     {
-        public AppShell()
+        private readonly ApiHandler _apiHandler;
+
+        public AppShell(ApiHandler apiHandler)
         {
             InitializeComponent();
-            var currentTheme = Application.Current!.RequestedTheme;
-            ThemeSegmentedControl.SelectedIndex = currentTheme == AppTheme.Light ? 0 : 1;
+            _apiHandler = apiHandler;
+         //   var currentTheme = Application.Current!.RequestedTheme;
+         //   ThemeSegmentedControl.SelectedIndex = currentTheme == AppTheme.Light ? 0 : 1;
         }
         public static async Task DisplaySnackbarAsync(string message)
         {
@@ -43,9 +46,10 @@ namespace MediLine_FrontEnd
             await toast.Show(cts.Token);
         }
 
-        private void SfSegmentedControl_SelectionChanged(object sender, Syncfusion.Maui.Toolkit.SegmentedControl.SelectionChangedEventArgs e)
+        private async void OnLogoutClicked(object sender, EventArgs e)
         {
-            Application.Current!.UserAppTheme = e.NewIndex == 0 ? AppTheme.Light : AppTheme.Dark;
+            await _apiHandler.RemoveToken();
+            await Shell.Current.GoToAsync("//Login");
         }
     }
 }

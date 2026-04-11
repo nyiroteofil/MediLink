@@ -30,20 +30,13 @@ namespace MediLine_FrontEnd
 #if DEBUG
     		builder.Logging.AddDebug();
     		builder.Services.AddLogging(configure => configure.AddDebug());
+            Environment.SetEnvironmentVariable("MEDILINK_URL", "https://localhost:7056/api");
 #endif
 
-            builder.Services.AddSingleton<ProjectRepository>();
-            builder.Services.AddSingleton<TaskRepository>();
-            builder.Services.AddSingleton<CategoryRepository>();
-            builder.Services.AddSingleton<TagRepository>();
-            builder.Services.AddSingleton<SeedDataService>();
-            builder.Services.AddSingleton<ModalErrorHandler>();
-            builder.Services.AddSingleton<MainPageModel>();
-            builder.Services.AddSingleton<ProjectListPageModel>();
-            builder.Services.AddSingleton<ManageMetaPageModel>();
+            builder.Services.AddSingleton<ApiHandler>();
 
-            builder.Services.AddTransientWithShellRoute<ProjectDetailPage, ProjectDetailPageModel>("project");
-            builder.Services.AddTransientWithShellRoute<TaskDetailPage, TaskDetailPageModel>("task");
+            builder.Services.AddSingleton<AppShell>();
+            builder.Services.AddSingleton<LoginPage>();
 
             return builder.Build();
         }

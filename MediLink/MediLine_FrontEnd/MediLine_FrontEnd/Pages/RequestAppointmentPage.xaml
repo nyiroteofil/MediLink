@@ -1,0 +1,61 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MediLine_FrontEnd.Pages.RequestAppointmentPage"
+             BackgroundColor="#13131F"
+             Title="Request Appointment">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="15">
+
+            <Label Text="Request Appointment"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   Margin="0,0,0,10"/>
+
+            <!-- IDs -->
+            <Label Text="PATIENT &amp; DOCTOR"
+                   TextColor="#6C63FF"
+                   FontSize="12"
+                   FontAttributes="Bold"/>
+
+            <Entry x:Name="PatientIDEntry"
+                   Placeholder="Patient ID"
+                   PlaceholderColor="#606070"
+                   TextColor="White"
+                   BackgroundColor="#1E1E2E"
+                   Keyboard="Numeric"/>
+
+            <Entry x:Name="DoctorIDEntry"
+                   Placeholder="Doctor ID"
+                   PlaceholderColor="#606070"
+                   TextColor="White"
+                   BackgroundColor="#1E1E2E"
+                   Keyboard="Numeric"/>
+
+            <!-- Request Details -->
+            <Label Text="REQUEST DETAILS"
+                   TextColor="#6C63FF"
+                   FontSize="12"
+                   FontAttributes="Bold"
+                   Margin="0,10,0,0"/>
+
+            <Editor x:Name="ReasonEntry"
+                    Placeholder="Reason for appointment"
+                    PlaceholderColor="#606070"
+                    TextColor="White"
+                    BackgroundColor="#1E1E2E"
+                    HeightRequest="120"
+                    AutoSize="TextChanges"/>
+
+            <Button Text="Submit Request"
+                    BackgroundColor="#6C63FF"
+                    TextColor="White"
+                    CornerRadius="8"
+                    Margin="0,20,0,0"
+                    Clicked="OnSubmitClicked"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

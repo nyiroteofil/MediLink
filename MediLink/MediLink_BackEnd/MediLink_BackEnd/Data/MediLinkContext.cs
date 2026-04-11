@@ -1,12 +1,12 @@
-﻿using Microsoft.EntityFrameworkCore;
-using MediLink_BackEnd.Models;
+﻿using MediLink_BackEnd.Models;
+using Microsoft.EntityFrameworkCore;
 
 namespace MediLink_BackEnd.Data
 {
-    public class MediLinkContext: DbContext
+    public class MediLinkContext : DbContext
     {
         public MediLinkContext(DbContextOptions<MediLinkContext> options) : base(options)
-        {}
+        { }
 
         public DbSet<Medication> Medications { get; set; }
         public DbSet<Institution> Institutions { get; set; }
@@ -15,6 +15,7 @@ namespace MediLink_BackEnd.Data
         public DbSet<SpecialistDoctor> SpecialistDoctors { get; set; }
         public DbSet<MedicalAsisstant> MedicalAsisstants { get; set; }
         public DbSet<Administrator> Administrators { get; set; }
+        public DbSet<DataSheet> DataSheets {  get; set; }
         public DbSet<PatientDataSheet> PatientDataSheets { get; set; }
         public DbSet<MedicalStaffDataSheet> MedicalStaffDataSheets { get; set; }
         public DbSet<Diagnosis> Diagnoses { get; set; }
@@ -30,40 +31,75 @@ namespace MediLink_BackEnd.Data
 
         protected override void OnModelCreating(ModelBuilder mb)
         {
-            // Resolving cascade cycles
-            mb.Entity<Patient>()
-                .HasMany(p => p.Referals)
-                .WithOne(r => r.Patient)
-                .OnDelete(DeleteBehavior.NoAction);
-
-            mb.Entity<SpecialistDoctor>()
-                .HasMany(p => p.IssuedReferals)
-                .WithOne(r => r.IssuingDoctor)
-                .OnDelete(DeleteBehavior.NoAction);
-
-            mb.Entity<Patient>()
-                .HasMany(p => p.Requests)
-                .WithOne(r => r.Patient)
-                .OnDelete(DeleteBehavior.NoAction);
-
-            mb.Entity<MedicationReminder>()
-                .HasOne(mr => mr.AdministratorOfMedicine)
-                .WithMany(u => u.AsministeringMedication)
-                .OnDelete(DeleteBehavior.NoAction);
-
-            mb.Entity<Appointment>()
-                .HasOne(a => a.SpecialistDoctor)
-                .WithMany(sp => sp.Appointments)
-                .OnDelete(DeleteBehavior.NoAction);
-
-            mb.Entity<MedicalAsisstant>()
-                .HasOne(ma => ma.AttendingDoctor)
-                .WithMany(sd => sd.MedicalAsisstants)
-                .OnDelete(DeleteBehavior.NoAction);
-
+            base.OnModelCreating(mb);
 
             mb.Entity<User>().UseTptMappingStrategy();
             mb.Entity<Event>().UseTptMappingStrategy();
+            mb.Entity<DataSheet>().UseTptMappingStrategy();
+
+            // Resolving cascade cycles and references to sub-class
+            mb.Entity<Referal>()
+                .HasOne(r => r.Patient)
+                .WithMany(p => p.Referals)
+                .HasForeignKey(r => r.PatientID)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            mb.Entity<Referal>()
+                .HasOne(r => r.IssuingDoctor)
+                .WithMany(d => d.IssuedReferals)
+                .HasForeignKey(r => r.SpecialistDoctorID)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            mb.Entity<AppointmentRequest>()
+                .HasOne(r => r.Patient)
+                .WithMany(p => p.Requests)
+                .HasForeignKey(r => r.PatientID)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            mb.Entity<AppointmentRequest>()
+                .HasOne(r => r.SpecialistDoctor)
+                .WithMany(d => d.Requests)
+                .HasForeignKey(r => r.SpecialistDoctorID)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            mb.Entity<MedicationReminder>()
+                .HasOne(mr => mr.AdministratorOfMedicine)
+                .WithMany()
+                .HasForeignKey(mr => mr.AdministratorId)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            mb.Entity<Appointment>()
+                .HasOne(a => a.SpecialistDoctor)
+                .WithMany()
+                .HasForeignKey(a => a.SpecialistDoctorID)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            mb.Entity<Appointment>()
+                .HasOne(a => a.Patient)
+                .WithMany()
+                .HasForeignKey(a => a.PatientID)
+                .IsRequired()
+                .OnDelete(DeleteBehavior.Restrict);
+
+            mb.Entity<CustomEvent>()
+                .HasMany(ce => ce.Attnedees)
+                .WithMany()
+                .UsingEntity(j => j.ToTable("CustomEventAttendees"));
+
+            mb.Entity<MedicalAsisstant>()
+                .HasMany(ma => ma.AttendingDoctors)
+                .WithMany(sd => sd.MedicalAsisstants);
+
+            mb.Entity<Medication>()
+                .HasMany(m => m.Ingredients)
+                .WithMany(i => i.UsedInMedications)
+                .UsingEntity(j => j.ToTable("MedicationIngredient"));
 
         }
     }

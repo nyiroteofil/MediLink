@@ -12,7 +12,7 @@ namespace MediLink_BackEnd.Models
 
     public class Medication
     {
-        public int Id { get; set; }
+        public int ID { get; set; }
         public string Code { get; set; }
         public string Name { get; set; }
         public MedicationForm MedicationForm { get; set; }
@@ -26,9 +26,9 @@ namespace MediLink_BackEnd.Models
 
     public class Ingredient
     {
-        public int Id { get; set; } 
+        public int ID { get; set; } 
         public string Name { get; set; }
         public string Description { get; set; }
-        public List<Medication> UsedIn { get; set; }
+        public List<Medication> UsedInMedications { get; set; }
     }
 }

@@ -1,0 +1,88 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MediLine_FrontEnd.Pages.DashboardPage"
+             BackgroundColor="#13131F"
+             Title="Dashboard">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="25">
+
+            <Label Text="Welcome to MediLink"
+                   FontSize="28"
+                   FontAttributes="Bold"
+                   TextColor="White"/>
+
+            <Label Text="Outpatient Clinic Management System"
+                   FontSize="14"
+                   TextColor="#A0A0B0"/>
+
+            <Grid ColumnDefinitions="*,*"
+                  RowDefinitions="Auto,Auto"
+                  ColumnSpacing="15"
+                  RowSpacing="15">
+
+                <Border Grid.Row="0" Grid.Column="0"
+                        BackgroundColor="#1E1E2E"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="20">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="👤" FontSize="28"/>
+                        <Label Text="Register Patient"
+                               TextColor="White"
+                               FontAttributes="Bold"/>
+                        <Label Text="Add a new patient to the system"
+                               TextColor="#A0A0B0"
+                               FontSize="12"/>
+                        <Button Text="Open"
+                                BackgroundColor="#6C63FF"
+                                TextColor="White"
+                                CornerRadius="8"
+                                Clicked="OnRegisterPatientClicked"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Grid.Row="0" Grid.Column="1"
+                        BackgroundColor="#1E1E2E"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="20">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="📅" FontSize="28"/>
+                        <Label Text="Request Appointment"
+                               TextColor="White"
+                               FontAttributes="Bold"/>
+                        <Label Text="Schedule a new appointment"
+                               TextColor="#A0A0B0"
+                               FontSize="12"/>
+                        <Button Text="Open"
+                                BackgroundColor="#6C63FF"
+                                TextColor="White"
+                                CornerRadius="8"
+                                Clicked="OnRequestAppointmentClicked"/>
+                    </VerticalStackLayout>
+                </Border>
+
+                <Border Grid.Row="1" Grid.Column="0"
+                        BackgroundColor="#1E1E2E"
+                        StrokeShape="RoundRectangle 12"
+                        Padding="20">
+                    <VerticalStackLayout Spacing="8">
+                        <Label Text="📋" FontSize="28"/>
+                        <Label Text="View Appointments"
+                               TextColor="White"
+                               FontAttributes="Bold"/>
+                        <Label Text="Browse scheduled appointments"
+                               TextColor="#A0A0B0"
+                               FontSize="12"/>
+                        <Button Text="Open"
+                                BackgroundColor="#6C63FF"
+                                TextColor="White"
+                                CornerRadius="8"
+                                Clicked="OnViewAppointmentsClicked"/>
+                    </VerticalStackLayout>
+                </Border>
+
+            </Grid>
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

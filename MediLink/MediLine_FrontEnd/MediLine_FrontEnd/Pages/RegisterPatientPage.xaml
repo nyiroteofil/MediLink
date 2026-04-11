@@ -1,0 +1,112 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MediLine_FrontEnd.Pages.RegisterPatientPage"
+             BackgroundColor="#13131F"
+             Title="Register Patient">
+
+    <ScrollView>
+        <VerticalStackLayout Padding="30" Spacing="15">
+
+            <Label Text="Register New Patient"
+                   FontSize="24"
+                   FontAttributes="Bold"
+                   TextColor="White"
+                   Margin="0,0,0,10"/>
+
+            <!-- Account Info -->
+            <Label Text="ACCOUNT INFORMATION"
+                   TextColor="#6C63FF"
+                   FontSize="12"
+                   FontAttributes="Bold"/>
+
+            <Entry x:Name="UsernameEntry"
+                   Placeholder="Username"
+                   PlaceholderColor="#606070"
+                   TextColor="White"
+                   BackgroundColor="#1E1E2E"/>
+
+            <Entry x:Name="PasswordEntry"
+                   Placeholder="Password"
+                   PlaceholderColor="#606070"
+                   TextColor="White"
+                   BackgroundColor="#1E1E2E"
+                   IsPassword="True"/>
+
+            <!-- Personal Info -->
+            <Label Text="PERSONAL INFORMATION"
+                   TextColor="#6C63FF"
+                   FontSize="12"
+                   FontAttributes="Bold"
+                   Margin="0,10,0,0"/>
+
+            <Entry x:Name="LastNameEntry"
+                   Placeholder="Last Name"
+                   PlaceholderColor="#606070"
+                   TextColor="White"
+                   BackgroundColor="#1E1E2E"/>
+
+            <Entry x:Name="FirstNameEntry"
+                   Placeholder="First Name"
+                   PlaceholderColor="#606070"
+                   TextColor="White"
+                   BackgroundColor="#1E1E2E"/>
+
+            <Entry x:Name="DateOfBirthEntry"
+                   Placeholder="Date of Birth (YYYY-MM-DD)"
+                   PlaceholderColor="#606070"
+                   TextColor="White"
+                   BackgroundColor="#1E1E2E"
+                   Keyboard="Numeric"/>
+
+            <Entry x:Name="SexEntry"
+                   Placeholder="Sex (M/F)"
+                   PlaceholderColor="#606070"
+                   TextColor="White"
+                   BackgroundColor="#1E1E2E"
+                   MaxLength="1"/>
+
+            <Entry x:Name="AddressEntry"
+                   Placeholder="Address (optional)"
+                   PlaceholderColor="#606070"
+                   TextColor="White"
+                   BackgroundColor="#1E1E2E"/>
+
+            <Entry x:Name="TAJNumberEntry"
+                   Placeholder="TAJ Number"
+                   PlaceholderColor="#606070"
+                   TextColor="White"
+                   BackgroundColor="#1E1E2E"
+                   Keyboard="Numeric"/>
+
+            <!-- Contact Info -->
+            <Label Text="CONTACT INFORMATION"
+                   TextColor="#6C63FF"
+                   FontSize="12"
+                   FontAttributes="Bold"
+                   Margin="0,10,0,0"/>
+
+            <Entry x:Name="EmailEntry"
+                   Placeholder="Email (optional)"
+                   PlaceholderColor="#606070"
+                   TextColor="White"
+                   BackgroundColor="#1E1E2E"
+                   Keyboard="Email"/>
+
+            <Entry x:Name="PhoneNumberEntry"
+                   Placeholder="Phone Number (optional)"
+                   PlaceholderColor="#606070"
+                   TextColor="White"
+                   BackgroundColor="#1E1E2E"
+                   Keyboard="Telephone"/>
+
+            <Button Text="Register Patient"
+                    BackgroundColor="#6C63FF"
+                    TextColor="White"
+                    CornerRadius="8"
+                    Margin="0,20,0,0"
+                    Clicked="OnRegisterClicked"/>
+
+        </VerticalStackLayout>
+    </ScrollView>
+</ContentPage>

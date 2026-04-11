@@ -1,0 +1,76 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MediLine_FrontEnd.Pages.ViewAppointmentsPage"
+             BackgroundColor="#13131F"
+             Title="View Appointments">
+
+    <VerticalStackLayout Padding="30" Spacing="15">
+
+        <Label Text="View Appointments"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="White"
+               Margin="0,0,0,10"/>
+
+        <!-- Search bar -->
+        <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
+            <Entry x:Name="UserIDEntry"
+                   Grid.Column="0"
+                   Placeholder="Enter Patient or Doctor ID"
+                   PlaceholderColor="#606070"
+                   TextColor="White"
+                   BackgroundColor="#1E1E2E"
+                   Keyboard="Numeric"/>
+            <Button x:Name="SearchButton"
+                    Grid.Column="1"
+                    Text="Search"
+                    BackgroundColor="#6C63FF"
+                    TextColor="White"
+                    CornerRadius="8"
+                    Clicked="OnSearchClicked"/>
+        </Grid>
+
+        <!-- Role selector -->
+        <HorizontalStackLayout Spacing="10">
+            <RadioButton x:Name="PatientRadio"
+                         Content="Patient"
+                         TextColor="White"
+                         IsChecked="True"/>
+            <RadioButton x:Name="DoctorRadio"
+                         Content="Doctor"
+                         TextColor="White"/>
+        </HorizontalStackLayout>
+
+        <!-- Results -->
+        <CollectionView x:Name="AppointmentsCollection"
+                        EmptyView="No appointments found.">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border BackgroundColor="#1E1E2E"
+                            StrokeShape="RoundRectangle 12"
+                            Padding="15"
+                            Margin="0,5">
+                        <Grid RowDefinitions="Auto,Auto,Auto,Auto" RowSpacing="5">
+                            <Label Grid.Row="0"
+                                   Text="{Binding PatientName, StringFormat='👤 Patient: {0}'}"
+                                   TextColor="White"
+                                   FontAttributes="Bold"/>
+                            <Label Grid.Row="1"
+                                   Text="{Binding DoctorName, StringFormat='🩺 Doctor: {0}'}"
+                                   TextColor="#A0A0B0"/>
+                            <Label Grid.Row="2"
+                                   Text="{Binding ReasonOfRequest, StringFormat='📋 Reason: {0}'}"
+                                   TextColor="#A0A0B0"/>
+                            <Label Grid.Row="3"
+                                   Text="{Binding Status, StringFormat='⚡ Status: {0}'}"
+                                   TextColor="#6C63FF"/>
+                        </Grid>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+
+</ContentPage>

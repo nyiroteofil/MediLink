@@ -3,8 +3,8 @@
     public abstract class DataSheet
     {
         public int Id { get; set; }
-        public string LastName { get; set; }
         public string FirstName { get; set; }
+        public string LastName { get; set; }
         public string DateOfBirth { get; set; }
         public char Sex { get; set; }
         public string? Address { get; set; }
@@ -19,6 +19,7 @@
     {
         public string EmployeeID { get; set; }
         public string Position { get; set; }
+        public int InstitutionID { get; set; }
         public Institution Institution { get; set; }
     }
 }
