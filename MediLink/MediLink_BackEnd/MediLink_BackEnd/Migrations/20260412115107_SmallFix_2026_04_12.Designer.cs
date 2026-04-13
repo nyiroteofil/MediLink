@@ -4,6 +4,7 @@ using MediLink_BackEnd.Data;
 using Microsoft.EntityFrameworkCore;
 using Microsoft.EntityFrameworkCore.Infrastructure;
 using Microsoft.EntityFrameworkCore.Metadata;
+using Microsoft.EntityFrameworkCore.Migrations;
 using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 
 #nullable disable
@@ -11,9 +12,11 @@ using Microsoft.EntityFrameworkCore.Storage.ValueConversion;
 namespace MediLink_BackEnd.Migrations
 {
     [DbContext(typeof(MediLinkContext))]
-    partial class MediLinkContextModelSnapshot : ModelSnapshot
+    [Migration("20260412115107_SmallFix_2026_04_12")]
+    partial class SmallFix_2026_04_12
     {
-        protected override void BuildModel(ModelBuilder modelBuilder)
+        /// <inheritdoc />
+        protected override void BuildTargetModel(ModelBuilder modelBuilder)
         {
 #pragma warning disable 612, 618
             modelBuilder

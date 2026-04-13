@@ -30,7 +30,7 @@ namespace MediLine_FrontEnd.Utilities
 
         public async Task<bool> LoginUser(LoginDTO dto)
         {
-            HttpResponseMessage res = await _httpClient.PostAsync($"{Environment.GetEnvironmentVariable("MEDILINK_URL")}/Users/LogIn", JsonContent.Create(dto));
+            HttpResponseMessage res = await _httpClient.PostAsync($"{Environment.GetEnvironmentVariable("MEDILINK_URL")}/UserManager/LogIn", JsonContent.Create(dto));
 
             if (res.IsSuccessStatusCode)
             {
@@ -89,6 +89,13 @@ namespace MediLine_FrontEnd.Utilities
             return role;
         }
 
+        public bool IsTokenExpired(string token)
+        {
+            JwtSecurityTokenHandler handler = new JwtSecurityTokenHandler();
+            JwtSecurityToken jwt = handler.ReadJwtToken(token);
+            return jwt.ValidTo < DateTime.UtcNow;
+        }
+
         public async Task<int> GetUserID()
         {
 
@@ -113,9 +120,48 @@ namespace MediLine_FrontEnd.Utilities
                 _logger.LogError(ex, "Failed to get user ID from token in ApiHandler");
                 return -1;
             }
-
-
         }
 
+        public async Task<string> GetUsername()
+        {
+            string tokenText = await FetchToken();
+
+            JwtSecurityTokenHandler jwt = new JwtSecurityTokenHandler();
+            JwtSecurityToken token = jwt.ReadJwtToken(tokenText);
+
+            string username = token.Claims.FirstOrDefault(c => c.Type == ClaimTypes.Name)?.Value;
+
+            if (username == null) return "No Username Found";
+            else return username;
+        }
+
+        public async Task<HttpResponseMessage> GetAsync(string endpoint)
+        {
+            await AttachToken();
+            return await _httpClient.GetAsync(
+                $"{Environment.GetEnvironmentVariable("MEDILINK_URL")}{endpoint}");
+        }
+
+        public async Task<HttpResponseMessage> PostAsync(string endpoint, object body)
+        {
+            await AttachToken();
+            return await _httpClient.PostAsync(
+                $"{Environment.GetEnvironmentVariable("MEDILINK_URL")}{endpoint}",
+                JsonContent.Create(body));
+        }
+
+        public async Task<HttpResponseMessage> PatchAsync(string endpoint)
+        {
+            await AttachToken();
+            HttpResponseMessage res = await _httpClient.PatchAsync($"{Environment.GetEnvironmentVariable("MEDILINK_URL")}{endpoint}", null);
+            return res;
+        }
+
+        public async Task<HttpResponseMessage> PatchAsync(string endpoint, object body)
+        {
+            await AttachToken();
+            HttpResponseMessage res = await _httpClient.PatchAsync($"{Environment.GetEnvironmentVariable("MEDILINK_URL")}{endpoint}", JsonContent.Create(body));
+            return res;
+        }
     }
 }

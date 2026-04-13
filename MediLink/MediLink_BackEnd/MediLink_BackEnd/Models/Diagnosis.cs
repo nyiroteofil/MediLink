@@ -2,8 +2,8 @@
 {
     public class Diagnosis
     {
-        public int Id { get; set; }
-        public int PatientId { get; set; }
+        public int ID { get; set; }
+        public int PatientID { get; set; }
         public Patient Patient { get; set; }
         public string Name { get; set; }
         public string Code { get; set; }

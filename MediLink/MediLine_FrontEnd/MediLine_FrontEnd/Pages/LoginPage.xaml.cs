@@ -19,9 +19,11 @@ public partial class LoginPage : ContentPage
         base.OnAppearing();
 
         string token = await SecureStorage.GetAsync("jwt_token");
-        if (token != null && !IsTokenExpired(token))
+        if (token != null && !_apiHandler.IsTokenExpired(token))
         {
             await _apiHandler.AttachToken();
+            var appShell = (AppShell)Application.Current.MainPage;
+            appShell.RefreshMenuVisibility();
             await Shell.Current.GoToAsync("//main");
         }
     }
@@ -45,7 +47,8 @@ public partial class LoginPage : ContentPage
 
             if (loginStatus)
             {
-                // Navigate to main page
+                var appShell = (AppShell)Application.Current.MainPage;
+                appShell.RefreshMenuVisibility();
                 await Shell.Current.GoToAsync("//main");
             }
             else

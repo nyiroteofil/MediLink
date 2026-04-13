@@ -14,6 +14,9 @@ namespace MediLink_BackEnd.Services
         Task<Patient> CreatePatientUser(PatientDTO dto);
         Task<SpecialistDoctor> CreateDoctorUser(StaffUserDTO dto);
         Task<string> UserLogIn(LoginDTO dto);
+        Task<Administrator> CreateAdministrator(StaffUserDTO dto);
+        Task<bool> ActivateUser(int userID);
+        Task<bool> SuspendUser(int userID);
     }
 
     public class UserService : IUserService
@@ -27,6 +30,47 @@ namespace MediLink_BackEnd.Services
             _config = config;
         }
 
+        public async Task<Administrator> CreateAdministrator(StaffUserDTO dto)
+        {
+            Administrator admin = new Administrator
+            {
+                Username = dto.Username,
+                PasswordHash = PwdEncryptionHelper.GetHashedPassword(dto.PasswordHash, out string salt),
+                PasswordSalt = salt,
+                Status = UserStatus.Active,
+                Role = UserRole.Administrator,
+                ContactInfo = new ContactInfo 
+                { 
+                    Email = dto.Email,
+                    PhoneNumber = dto.PhoneNumber
+                },
+                DataSheet =  new MedicalStaffDataSheet
+                {
+                    FirstName = dto.FirstName,
+                    LastName = dto.LastName,
+                    EmployeeID = dto.EmployeeID,
+                    Position = dto.Position,
+                    InstitutionID = dto.InstitutionID,
+                    DateOfBirth = dto.DateOfBirth,
+                    Sex = dto.Sex,
+                    Address = dto.Address
+                }
+            };
+
+            try
+            {
+                _dbContext.Administrators.Add(admin);
+                await _dbContext.SaveChangesAsync();
+
+                return admin;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+        }
+
         async public Task<Patient> CreatePatientUser(PatientDTO dto)
         {
 
@@ -35,7 +79,7 @@ namespace MediLink_BackEnd.Services
             // transfering data from DTO
             var patient = new Patient
             {
-                Username = dto.UserName,
+                Username = dto.Username,
                 PasswordHash = passwordHash,
                 PasswordSalt = salt,
                 Status = UserStatus.Active,
@@ -79,7 +123,7 @@ namespace MediLink_BackEnd.Services
             // transfering data from DTO
             var specialistDoctor = new SpecialistDoctor
             {
-                Username = dto.UserName,
+                Username = dto.Username,
                 PasswordHash = passwordHash,
                 PasswordSalt= salt,
                 Status = UserStatus.Active,
@@ -116,12 +160,69 @@ namespace MediLink_BackEnd.Services
             }
         }
 
+        public async Task<bool> ActivateUser(int userID)
+        {
+            User user;
+
+            try
+            {
+                user = await _dbContext.Users.Where(u => u.ID == userID).FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                throw;
+            }
+
+            if (user != null)
+            {
+                user.Status = UserStatus.Active;
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            else return false;
+        }
+
+
+        public async Task<bool> SuspendUser(int userID)
+        {
+            User user;
+
+            try
+            {
+                user = await _dbContext.Users.Where(u => u.ID == userID).FirstOrDefaultAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.Write(ex.ToString());
+                throw;
+            }
+
+            if (user != null)
+            {
+                user.Status = UserStatus.Suspended;
+                await _dbContext.SaveChangesAsync();
+                return true;
+            }
+            else return false;
+        }
+
         async public Task<string> UserLogIn(LoginDTO dto)
         {
+
+            // Validate user's username and password
             var user = await _dbContext.Users
                 .FirstOrDefaultAsync(u => u.Username == dto.Username);
 
             if (user == null || !PwdEncryptionHelper.VerifyPassword(dto.Password, user.PasswordHash, user.PasswordSalt)) return null;
+
+
+            // Check if user's account is not suspended or inactive
+            if (user.Status == UserStatus.Suspended)
+                throw new UnauthorizedAccessException("Account is suspended.");
+
+            if (user.Status != UserStatus.Active)
+                throw new UnauthorizedAccessException("Account is not active.");
 
             string token = CreateJWTToken(user);
 

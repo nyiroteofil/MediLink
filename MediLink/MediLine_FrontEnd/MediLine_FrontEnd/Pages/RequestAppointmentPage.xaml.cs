@@ -46,8 +46,7 @@ namespace MediLine_FrontEnd.Pages
                 var json = JsonSerializer.Serialize(dto);
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
-                var response = await _httpClient.PostAsync(
-                    "https://localhost:7056/api/Appointments/RequestAppointment",
+                var response = await _httpClient.PostAsync($"{Environment.GetEnvironmentVariable("MEDILINK_URL")}/Appointments/RequestAppointment",
                     content);
 
                 if (response.IsSuccessStatusCode)

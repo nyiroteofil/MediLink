@@ -52,22 +52,32 @@
         Route="main"/>
 
     <ShellContent
+        x:Name="RegisterPatientContent"
         Title="Register Patient"
         FlyoutIcon="👤"
         ContentTemplate="{DataTemplate pages:RegisterPatientPage}"
         Route="register"/>
 
     <ShellContent
+        x:Name="RequestAppointmentContent"
         Title="Request Appointment"
         FlyoutIcon="📅"
         ContentTemplate="{DataTemplate pages:RequestAppointmentPage}"
         Route="appointment"/>
 
     <ShellContent
+        x:Name="ViewAppointmentsContent"
         Title="View Appointments"
         FlyoutIcon="📋"
         ContentTemplate="{DataTemplate pages:ViewAppointmentsPage}"
         Route="appointments"/>
+
+    <ShellContent
+    x:Name="AdminContent"
+    Title="Admin Panel"
+    FlyoutIcon="⚙️"
+    ContentTemplate="{DataTemplate pages:AdminUserManagerPage}"
+    Route="admin"/>
 
     <Shell.FlyoutFooter>
         <StackLayout BackgroundColor="#1E1E2E" Padding="15" Spacing="10">

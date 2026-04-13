@@ -36,7 +36,12 @@ namespace MediLine_FrontEnd
             builder.Services.AddSingleton<ApiHandler>();
 
             builder.Services.AddSingleton<AppShell>();
-            builder.Services.AddSingleton<LoginPage>();
+            builder.Services.AddTransient<DashboardPage>();
+            builder.Services.AddTransient<LoginPage>();
+            builder.Services.AddTransient<RegisterPatientPage>();
+            builder.Services.AddTransient<RequestAppointmentPage>();
+            builder.Services.AddTransient<ViewAppointmentsPage>();
+            builder.Services.AddTransient<AdminUserManagerPage>();
 
             return builder.Build();
         }

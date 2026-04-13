@@ -1,0 +1,231 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MediLine_FrontEnd.Pages.AdminUserManagerPage"
+             BackgroundColor="#13131F"
+             Title="User Management">
+
+    <Grid RowDefinitions="Auto,*">
+
+        <!-- Tab buttons -->
+        <HorizontalStackLayout Grid.Row="0"
+                               BackgroundColor="#1E1E2E"
+                               Spacing="0">
+            <Button x:Name="AddUserTabBtn"
+                    Text="Add User"
+                    BackgroundColor="#6C63FF"
+                    TextColor="White"
+                    CornerRadius="0"
+                    Clicked="OnAddUserTabClicked"/>
+            <Button x:Name="ActiveUsersTabBtn"
+                    Text="Active Users"
+                    BackgroundColor="Transparent"
+                    TextColor="#A0A0B0"
+                    CornerRadius="0"
+                    Clicked="OnActiveUsersTabClicked"/>
+            <Button x:Name="SuspendedUsersTabBtn"
+                    Text="Suspended Users"
+                    BackgroundColor="Transparent"
+                    TextColor="#A0A0B0"
+                    CornerRadius="0"
+                    Clicked="OnSuspendedUsersTabClicked"/>
+        </HorizontalStackLayout>
+
+        <ScrollView Grid.Row="1">
+            <VerticalStackLayout Padding="20" Spacing="15">
+
+                <!-- ADD USER TAB -->
+                <VerticalStackLayout x:Name="AddUserTab" IsVisible="True" Spacing="15">
+
+                    <Label Text="ADD NEW USER"
+                           TextColor="#6C63FF"
+                           FontSize="12"
+                           FontAttributes="Bold"/>
+
+                    <!-- Role selector -->
+                    <HorizontalStackLayout Spacing="15">
+                        <RadioButton x:Name="PatientRadio"
+                                     Content="Patient"
+                                     TextColor="White"
+                                     IsChecked="True"
+                                     CheckedChanged="OnRoleRadioChanged"/>
+                        <RadioButton x:Name="DoctorRadio"
+                                     Content="Doctor"
+                                     TextColor="White"
+                                     CheckedChanged="OnRoleRadioChanged"/>
+                        <RadioButton x:Name="AssistantRadio"
+                                     Content="Assistant"
+                                     TextColor="White"
+                                     CheckedChanged="OnRoleRadioChanged"/>
+                        <RadioButton x:Name="AdminRadio"
+                                     Content="Admin"
+                                     TextColor="White"
+                                     CheckedChanged="OnRoleRadioChanged"/>
+                    </HorizontalStackLayout>
+
+                    <!-- Common fields -->
+                    <Label Text="ACCOUNT" TextColor="#6C63FF" FontSize="12" FontAttributes="Bold"/>
+                    <Entry x:Name="UsernameEntry" Placeholder="Username"
+                           PlaceholderColor="#606070" TextColor="White" BackgroundColor="#1E1E2E"/>
+                    <Entry x:Name="PasswordEntry" Placeholder="Password"
+                           PlaceholderColor="#606070" TextColor="White" BackgroundColor="#1E1E2E"
+                           IsPassword="True"/>
+
+                    <Label Text="PERSONAL INFO" TextColor="#6C63FF" FontSize="12" FontAttributes="Bold"/>
+                    <Entry x:Name="FirstNameEntry" Placeholder="First Name"
+                           PlaceholderColor="#606070" TextColor="White" BackgroundColor="#1E1E2E"/>
+                    <Entry x:Name="LastNameEntry" Placeholder="Last Name"
+                           PlaceholderColor="#606070" TextColor="White" BackgroundColor="#1E1E2E"/>
+                    <Entry x:Name="DateOfBirthEntry" Placeholder="Date of Birth (YYYY-MM-DD)"
+                           PlaceholderColor="#606070" TextColor="White" BackgroundColor="#1E1E2E"/>
+                    <Entry x:Name="SexEntry" Placeholder="Sex (M/F)"
+                           PlaceholderColor="#606070" TextColor="White" BackgroundColor="#1E1E2E"
+                           MaxLength="1"/>
+                    <Entry x:Name="AddressEntry" Placeholder="Address (optional)"
+                           PlaceholderColor="#606070" TextColor="White" BackgroundColor="#1E1E2E"/>
+
+                    <!-- Patient specific -->
+                    <VerticalStackLayout x:Name="PatientFields" IsVisible="True" Spacing="10">
+                        <Label Text="PATIENT INFO" TextColor="#6C63FF" FontSize="12" FontAttributes="Bold"/>
+                        <Entry x:Name="TAJNumberEntry" Placeholder="TAJ Number"
+                               PlaceholderColor="#606070" TextColor="White" BackgroundColor="#1E1E2E"/>
+                    </VerticalStackLayout>
+
+                    <!-- Staff specific -->
+                    <VerticalStackLayout x:Name="StaffFields" IsVisible="False" Spacing="10">
+                        <Label Text="STAFF INFO" TextColor="#6C63FF" FontSize="12" FontAttributes="Bold"/>
+                        <Entry x:Name="EmployeeIDEntry" Placeholder="Employee ID"
+                               PlaceholderColor="#606070" TextColor="White" BackgroundColor="#1E1E2E"/>
+                        <Entry x:Name="PositionEntry" Placeholder="Position"
+                               PlaceholderColor="#606070" TextColor="White" BackgroundColor="#1E1E2E"/>
+                        <Entry x:Name="InstitutionIDEntry" Placeholder="Institution ID"
+                               PlaceholderColor="#606070" TextColor="White" BackgroundColor="#1E1E2E"
+                               Keyboard="Numeric"/>
+                    </VerticalStackLayout>
+
+                    <!-- Contact -->
+                    <Label Text="CONTACT" TextColor="#6C63FF" FontSize="12" FontAttributes="Bold"/>
+                    <Entry x:Name="EmailEntry" Placeholder="Email (optional)"
+                           PlaceholderColor="#606070" TextColor="White" BackgroundColor="#1E1E2E"
+                           Keyboard="Email"/>
+                    <Entry x:Name="PhoneEntry" Placeholder="Phone (optional)"
+                           PlaceholderColor="#606070" TextColor="White" BackgroundColor="#1E1E2E"
+                           Keyboard="Telephone"/>
+
+                    <Button Text="Create User"
+                            BackgroundColor="#6C63FF"
+                            TextColor="White"
+                            CornerRadius="8"
+                            Margin="0,10,0,0"
+                            Clicked="OnCreateUserClicked"/>
+
+                </VerticalStackLayout>
+
+                <!-- ACTIVE USERS TAB -->
+                <VerticalStackLayout x:Name="ActiveUsersTab" IsVisible="False" Spacing="15">
+
+                    <Label Text="ACTIVE USERS"
+                           TextColor="#6C63FF"
+                           FontSize="12"
+                           FontAttributes="Bold"/>
+
+                    <HorizontalStackLayout Spacing="15">
+                        <RadioButton x:Name="ActivePatientRadio" Content="Patients"
+                                     TextColor="White" IsChecked="True"
+                                     CheckedChanged="OnActiveFilterChanged"/>
+                        <RadioButton x:Name="ActiveDoctorRadio" Content="Doctors"
+                                     TextColor="White" CheckedChanged="OnActiveFilterChanged"/>
+                        <RadioButton x:Name="ActiveAssistantRadio" Content="Assistants"
+                                     TextColor="White" CheckedChanged="OnActiveFilterChanged"/>
+                        <RadioButton x:Name="ActiveAdminRadio" Content="Admins"
+                                     TextColor="White" CheckedChanged="OnActiveFilterChanged"/>
+                    </HorizontalStackLayout>
+
+                    <CollectionView x:Name="ActiveUsersCollection"
+                                    EmptyView="No active users found.">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BackgroundColor="#1E1E2E"
+                                        StrokeShape="RoundRectangle 12"
+                                        Padding="15" Margin="0,5">
+                                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                                        <Label Grid.Row="0" Grid.Column="0"
+                                               Text="{Binding FullName}"
+                                               TextColor="White"
+                                               FontAttributes="Bold"/>
+                                        <Label Grid.Row="1" Grid.Column="0"
+                                               Text="{Binding Username, StringFormat='@{0}'}"
+                                               TextColor="#A0A0B0"
+                                               FontSize="12"/>
+                                        <Button Grid.Row="0" Grid.Column="1"
+                                                Grid.RowSpan="2"
+                                                Text="Suspend"
+                                                BackgroundColor="#FF4444"
+                                                TextColor="White"
+                                                CornerRadius="8"
+                                                CommandParameter="{Binding ID}"
+                                                Clicked="OnSuspendClicked"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </VerticalStackLayout>
+
+                <!-- SUSPENDED USERS TAB -->
+                <VerticalStackLayout x:Name="SuspendedUsersTab" IsVisible="False" Spacing="15">
+
+                    <Label Text="SUSPENDED USERS"
+                           TextColor="#6C63FF"
+                           FontSize="12"
+                           FontAttributes="Bold"/>
+
+                    <HorizontalStackLayout Spacing="15">
+                        <RadioButton x:Name="SuspendedPatientRadio" Content="Patients"
+                                     TextColor="White" IsChecked="True"
+                                     CheckedChanged="OnSuspendedFilterChanged"/>
+                        <RadioButton x:Name="SuspendedDoctorRadio" Content="Doctors"
+                                     TextColor="White" CheckedChanged="OnSuspendedFilterChanged"/>
+                        <RadioButton x:Name="SuspendedAssistantRadio" Content="Assistants"
+                                     TextColor="White" CheckedChanged="OnSuspendedFilterChanged"/>
+                        <RadioButton x:Name="SuspendedAdminRadio" Content="Admins"
+                                     TextColor="White" CheckedChanged="OnSuspendedFilterChanged"/>
+                    </HorizontalStackLayout>
+
+                    <CollectionView x:Name="SuspendedUsersCollection"
+                                    EmptyView="No suspended users found.">
+                        <CollectionView.ItemTemplate>
+                            <DataTemplate>
+                                <Border BackgroundColor="#1E1E2E"
+                                        StrokeShape="RoundRectangle 12"
+                                        Padding="15" Margin="0,5">
+                                    <Grid ColumnDefinitions="*,Auto" RowDefinitions="Auto,Auto">
+                                        <Label Grid.Row="0" Grid.Column="0"
+                                               Text="{Binding FullName}"
+                                               TextColor="White"
+                                               FontAttributes="Bold"/>
+                                        <Label Grid.Row="1" Grid.Column="0"
+                                               Text="{Binding Username, StringFormat='@{0}'}"
+                                               TextColor="#A0A0B0"
+                                               FontSize="12"/>
+                                        <Button Grid.Row="0" Grid.Column="1"
+                                                Grid.RowSpan="2"
+                                                Text="Reactivate"
+                                                BackgroundColor="#44AA44"
+                                                TextColor="White"
+                                                CornerRadius="8"
+                                                CommandParameter="{Binding ID}"
+                                                Clicked="OnReactivateClicked"/>
+                                    </Grid>
+                                </Border>
+                            </DataTemplate>
+                        </CollectionView.ItemTemplate>
+                    </CollectionView>
+
+                </VerticalStackLayout>
+
+            </VerticalStackLayout>
+        </ScrollView>
+    </Grid>
+</ContentPage>

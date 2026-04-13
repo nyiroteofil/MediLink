@@ -9,12 +9,13 @@ namespace MediLink_BackEnd.Services
     {
         public Task<int> GetDocAppointmentsWeekAhead(int docID);
         public Task<DateTime?> GetNextAppointmentDate(int suerID);
+        public Task<int> DocActivePatientNumber(int docID);
     }
 
     public class InfoService : IInfoService
     {
         private readonly MediLinkContext _dbContext;
-        
+
         public InfoService(MediLinkContext dbContext)
         {
             _dbContext = dbContext;
@@ -53,6 +54,28 @@ namespace MediLink_BackEnd.Services
             {
                 Console.WriteLine(ex.ToString());
                 throw;
+            }
+        }
+
+        public async Task<int> DocActivePatientNumber(int docID)
+        {
+            try
+            {
+                int numOfActivePatients = await _dbContext.Patients
+                    .Include(p => p.SpecialistDoctors)
+                    .Include(p => p.Dignoses)
+                    .CountAsync(p =>
+                        p.SpecialistDoctors.Any(sp => sp.ID == docID) &&
+                        p.Dignoses.Any(d =>
+                        d.Status == DiagnosisStatus.Active ||
+                        d.Status == DiagnosisStatus.Remission));
+
+                return numOfActivePatients;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return -1;
             }
         }
     }

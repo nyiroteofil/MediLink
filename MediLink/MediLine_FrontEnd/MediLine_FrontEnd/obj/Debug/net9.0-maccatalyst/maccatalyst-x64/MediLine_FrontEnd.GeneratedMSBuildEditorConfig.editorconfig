@@ -33,6 +33,12 @@ build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.AppShell
 build_metadata.AdditionalFiles.TargetPath = AppShell.xaml
 build_metadata.AdditionalFiles.RelativePath = AppShell.xaml
 
+[D:/Szakdoogozat_BSc/MediLink/MediLine_FrontEnd/MediLine_FrontEnd/Pages/AdminUserManagerPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.AdminUserManagerPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\AdminUserManagerPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\AdminUserManagerPage.xaml
+
 [D:/Szakdoogozat_BSc/MediLink/MediLine_FrontEnd/MediLine_FrontEnd/Pages/Controls/AddButton.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.Controls.AddButton.xaml

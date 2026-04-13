@@ -9,7 +9,7 @@ using System.Net;
 
 namespace MediLink_BackEnd.Controllers
 {
-    [Route("api/Users/[action]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class UserManagerController : Controller
     {
@@ -20,6 +20,23 @@ namespace MediLink_BackEnd.Controllers
         {
             _dbContext = dbContext;
             _userService = userService;
+        }
+
+        [HttpPost]
+        public async Task<IActionResult> AddAdministrator(StaffUserDTO dto)
+        {
+            try
+            {
+                Administrator admin = await _userService.CreateAdministrator(dto);
+
+                if (admin == null) return BadRequest("Could not create administrator");
+                else return Ok(admin);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex);
+                return StatusCode(500, $"An error occured during administrator creation: {ex.Message}");
+            }
         }
 
         [HttpPost]
@@ -71,17 +88,33 @@ namespace MediLink_BackEnd.Controllers
         }
 
         [HttpPatch]
-        public IActionResult ChangeUserStatus(int UserId, UserStatus status)
+        public async Task<IActionResult> ActivateUser(int userID)
         {
-            return Ok();
+            try
+            {
+                if (await _userService.ActivateUser(userID)) return Ok();
+                else return NotFound($"User with ID \"{userID}\" not found!");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.ToString());
+            }
         }
 
         [HttpPatch]
-        public IActionResult UpdateUser(int UserId)
+        public async Task<IActionResult> SuspendUser(int userID)
         {
-            return Ok();
+            try
+            {
+                if (await _userService.SuspendUser(userID)) return Ok();
+                else return NotFound($"User with ID \"{userID}\" not found!");
+            }
+            catch (Exception ex)
+            {
+                return StatusCode(500, ex.ToString());
+            }
         }
 
-
     }
+
 }

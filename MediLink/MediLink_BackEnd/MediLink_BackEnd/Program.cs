@@ -84,6 +84,7 @@ namespace MediLink_BackEnd
             builder.Services.AddScoped<IAppointmentService, AppointmentService>();
             builder.Services.AddScoped<IInstiutionService, InstitutionService>();
             builder.Services.AddScoped<IInfoService, InfoService>();
+            builder.Services.AddScoped<IAdministratorService, AdministratorService>();
 
             var app = builder.Build();
 

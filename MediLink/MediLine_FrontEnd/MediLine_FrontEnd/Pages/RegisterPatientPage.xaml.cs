@@ -51,7 +51,7 @@ namespace MediLine_FrontEnd.Pages
                 var content = new StringContent(json, Encoding.UTF8, "application/json");
 
                 var response = await _httpClient.PostAsync(
-                    "https://localhost:7056/api/Users/AddPatientUser",
+                    $"{Environment.GetEnvironmentVariable("MEDILINK_URL")}/UserManager/AddPatientUser",
                     content);
 
                 if (response.IsSuccessStatusCode)

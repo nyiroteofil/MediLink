@@ -4,11 +4,12 @@ using MediLink_BackEnd.Services;
 using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Http;
 using Microsoft.AspNetCore.Mvc;
+using System.Net;
 
 namespace MediLink_BackEnd.Controllers
 {
     [Authorize]
-    [Route("api/[controller]")]
+    [Route("api/[controller]/[action]")]
     [ApiController]
     public class InfoController : ControllerBase
     {
@@ -32,14 +33,31 @@ namespace MediLink_BackEnd.Controllers
 
         [Authorize(Roles = "Patient,SpecialistDoctor,MedicalAssistant,Administrator")]
         [HttpGet]
-        public async Task<DateTime?> GetNextAppointmentDate(int userID)
+        public async Task<IActionResult> GetNextAppointmentDate(int userID)
         {
             DateTime? appDate = await _infoService.GetNextAppointmentDate(userID);
 
             if (appDate == null) return null;
-            else return appDate;
+            else return Ok(appDate);
         }
 
 
+        [Authorize(Roles = "SpecialistDoctor,MedicalAssistant,Administrator")]
+        [HttpGet]
+        public async Task<IActionResult> DocActivePatientsNumber(int docID)
+        {
+            try
+            {
+                int numberOfPatients = await _infoService.DocActivePatientNumber(docID);
+
+                if (numberOfPatients == -1) return StatusCode(((int)HttpStatusCode.InternalServerError), "InfoService returned with \"-1\" value (No such patients, or error)");
+                else return Ok(numberOfPatients);
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return StatusCode(500, ex.ToString());
+            }
+        }
     }
 }

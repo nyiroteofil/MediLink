@@ -51,5 +51,42 @@ namespace MediLine_FrontEnd
             await _apiHandler.RemoveToken();
             await Shell.Current.GoToAsync("//Login");
         }
+
+        public async void RefreshMenuVisibility()
+        {
+            string role = await _apiHandler.GetUserRole();
+
+            // Hide everything first
+            RegisterPatientContent.IsVisible = false;
+            RequestAppointmentContent.IsVisible = false;
+            ViewAppointmentsContent.IsVisible = false;
+            AdminContent.IsVisible = false;
+
+            switch (role)
+            {
+                case "Patient":
+                    RequestAppointmentContent.IsVisible = true;
+                    ViewAppointmentsContent.IsVisible = true;
+                    break;
+
+                case "SpecialistDoctor":
+                    RegisterPatientContent.IsVisible = true;
+                    ViewAppointmentsContent.IsVisible = true;
+                    break;
+
+                case "MedicalAssistant":
+                    RegisterPatientContent.IsVisible = true;
+                    RequestAppointmentContent.IsVisible = true;
+                    ViewAppointmentsContent.IsVisible = true;
+                    break;
+
+                case "Administrator":
+                    RegisterPatientContent.IsVisible = true;
+                    RequestAppointmentContent.IsVisible = true;
+                    ViewAppointmentsContent.IsVisible = true;
+                    AdminContent.IsVisible = true;
+                    break;
+            }
+        }
     }
 }
