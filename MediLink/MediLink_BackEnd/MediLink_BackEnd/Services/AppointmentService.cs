@@ -10,6 +10,7 @@ namespace MediLink_BackEnd.Services
         public Task<AppointmentRequest> RequestAppointment(AppointmentRequestDTO dto);
         public Task<List<AppointmentRequestResponseDTO>> GetPatientsAppointment(int ID);
         public Task<List<AppointmentRequestResponseDTO>> GetDoctorsAppointment(int ID);
+        public Task<List<AppointmentRequestResponseDTO>> GetPendingAppointmentRequests(int userID);
     }
 
     public class AppointmentService : IAppointmentService
@@ -19,6 +20,38 @@ namespace MediLink_BackEnd.Services
         public AppointmentService(MediLinkContext context)
         {
             _dbContext = context;
+        }
+
+        public async Task<List<AppointmentRequestResponseDTO>> GetPendingAppointmentRequests(int userID)
+        {
+            try
+            {
+                var requests = await _dbContext.AppointmentRequests
+                    .Include(r => r.Patient)
+                        .ThenInclude(p => p.DataSheet)
+                    .Include(r => r.SpecialistDoctor)
+                        .ThenInclude(d => d.DataSheet)
+                    .Where(ar => ar.SpecialistDoctorID == userID
+                        && ar.Status == RequestStatus.Pending)
+                    .ToListAsync();
+
+                return requests.Select(r => new AppointmentRequestResponseDTO
+                {
+                    ID = r.ID,
+                    PatientID = r.PatientID,
+                    PatientName = $"{r.Patient.DataSheet.FirstName} {r.Patient.DataSheet.LastName}",
+                    SpecialistDoctorID = r.SpecialistDoctorID,
+                    DoctorName = $"{r.SpecialistDoctor.DataSheet.FirstName} {r.SpecialistDoctor.DataSheet.LastName}",
+                    ReasonOfRequest = r.ReasonOfRequest,
+                    Status = r.Status,
+                    ReasonOfDenial = r.ReasonOfDenial
+                }).ToList();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
         }
 
         async public Task<AppointmentRequest> RequestAppointment(AppointmentRequestDTO dto)

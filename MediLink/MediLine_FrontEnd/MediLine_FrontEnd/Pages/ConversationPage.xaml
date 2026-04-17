@@ -1,0 +1,81 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MediLine_FrontEnd.Pages.ConversationPage"
+             BackgroundColor="#13131F"
+             Title="Conversation">
+
+    <Grid RowDefinitions="*,Auto">
+
+        <!-- Messages list -->
+        <CollectionView x:Name="MessagesCollection"
+                        Grid.Row="0"
+                        Margin="10">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Grid Padding="5">
+                        <!-- Received message (left) -->
+                        <Border x:Name="ReceivedBubble"
+                                BackgroundColor="#1E1E2E"
+                                StrokeShape="RoundRectangle 15"
+                                Padding="12,8"
+                                Margin="0,0,60,5"
+                                HorizontalOptions="Start"
+                                IsVisible="{Binding IsReceived}">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Content}"
+                                       TextColor="White"
+                                       FontSize="15"/>
+                                <Label Text="{Binding SentAt, StringFormat='{0:HH:mm}'}"
+                                       TextColor="#A0A0B0"
+                                       FontSize="10"
+                                       HorizontalOptions="End"/>
+                            </VerticalStackLayout>
+                        </Border>
+
+                        <!-- Sent message (right) -->
+                        <Border BackgroundColor="#6C63FF"
+                                StrokeShape="RoundRectangle 15"
+                                Padding="12,8"
+                                Margin="60,0,0,5"
+                                HorizontalOptions="End"
+                                IsVisible="{Binding IsSent}">
+                            <VerticalStackLayout>
+                                <Label Text="{Binding Content}"
+                                       TextColor="White"
+                                       FontSize="15"/>
+                                <Label Text="{Binding SentAt, StringFormat='{0:HH:mm}'}"
+                                       TextColor="#CCCCFF"
+                                       FontSize="10"
+                                       HorizontalOptions="End"/>
+                            </VerticalStackLayout>
+                        </Border>
+                    </Grid>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+        <!-- Message input -->
+        <Grid Grid.Row="1"
+              ColumnDefinitions="*,Auto"
+              BackgroundColor="#1E1E2E"
+              Padding="10">
+            <Entry x:Name="MessageEntry"
+                   Grid.Column="0"
+                   Placeholder="Type a message..."
+                   PlaceholderColor="#606070"
+                   TextColor="White"
+                   BackgroundColor="Transparent"
+                   VerticalOptions="Center"/>
+            <Button Grid.Column="1"
+                    Text="➤"
+                    BackgroundColor="#6C63FF"
+                    TextColor="White"
+                    CornerRadius="20"
+                    HeightRequest="40"
+                    WidthRequest="40"
+                    Clicked="OnSendClicked"/>
+        </Grid>
+
+    </Grid>
+</ContentPage>

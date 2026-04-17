@@ -81,6 +81,22 @@
   },
   {
     "ContainingType": "MediLink_BackEnd.Controllers.AppointmentController",
+    "Method": "AcceptAppointment",
+    "RelativePath": "api/Appointments/AcceptAppointment",
+    "HttpMethod": "POST",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "requestID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.AppointmentController",
     "Method": "GetDoctorsAppointments",
     "RelativePath": "api/Appointments/GetDoctorsAppointments",
     "HttpMethod": "GET",
@@ -97,6 +113,22 @@
   },
   {
     "ContainingType": "MediLink_BackEnd.Controllers.AppointmentController",
+    "Method": "GetPatientPendingAppointments",
+    "RelativePath": "api/Appointments/GetPatientPendingAppointments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "docID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.AppointmentController",
     "Method": "GetPatientsAppointments",
     "RelativePath": "api/Appointments/GetPatientsAppointments",
     "HttpMethod": "GET",
@@ -105,6 +137,22 @@
     "Parameters": [
       {
         "Name": "ID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MediLink_BackEnd.Controllers.AppointmentController",
+    "Method": "GetPendingAppointments",
+    "RelativePath": "api/Appointments/GetPendingAppointments",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userID",
         "Type": "System.Int32",
         "IsRequired": false
       }
@@ -323,105 +371,69 @@
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MediLink_BackEnd.Controllers.MessagingController",
-    "Method": "CreateCustomExample",
-    "RelativePath": "api/Messaging/CreateCustomExample",
+    "ContainingType": "MessageController",
+    "Method": "CreateChat",
+    "RelativePath": "api/Message/CreateChat",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
+        "Name": "docID",
         "Type": "System.Int32",
         "IsRequired": false
       },
       {
-        "Name": "appointment",
-        "Type": "MediLink_BackEnd.Models.CustomEvent",
-        "IsRequired": true
+        "Name": "patientID",
+        "Type": "System.Int32",
+        "IsRequired": false
       }
     ],
     "ReturnTypes": []
   },
   {
-    "ContainingType": "MediLink_BackEnd.Controllers.MessagingController",
-    "Method": "CreateGroupMessage",
-    "RelativePath": "api/Messaging/CreateGroupMessage",
+    "ContainingType": "MessageController",
+    "Method": "GetMessagesFromChat",
+    "RelativePath": "api/Message/GetMessagesFromChat",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "chatID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MessageController",
+    "Method": "GetUserChats",
+    "RelativePath": "api/Message/GetUserChats",
+    "HttpMethod": "GET",
+    "IsController": true,
+    "Order": 0,
+    "Parameters": [
+      {
+        "Name": "userID",
+        "Type": "System.Int32",
+        "IsRequired": false
+      }
+    ],
+    "ReturnTypes": []
+  },
+  {
+    "ContainingType": "MessageController",
+    "Method": "PostMessage",
+    "RelativePath": "api/Message/PostMessage",
     "HttpMethod": "POST",
     "IsController": true,
     "Order": 0,
     "Parameters": [
       {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "reminder",
-        "Type": "MediLink_BackEnd.Models.MedicationReminder",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MediLink_BackEnd.Controllers.MessagingController",
-    "Method": "CreateUserMessage",
-    "RelativePath": "api/Messaging/CreateUserMessage",
-    "HttpMethod": "POST",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "appointment",
-        "Type": "MediLink_BackEnd.Models.Appointment",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MediLink_BackEnd.Controllers.MessagingController",
-    "Method": "UpdateExample",
-    "RelativePath": "api/Messaging/UpdateExample",
-    "HttpMethod": "PATCH",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "appointment",
-        "Type": "MediLink_BackEnd.Models.Appointment",
-        "IsRequired": true
-      }
-    ],
-    "ReturnTypes": []
-  },
-  {
-    "ContainingType": "MediLink_BackEnd.Controllers.MessagingController",
-    "Method": "UpdateMessage",
-    "RelativePath": "api/Messaging/UpdateMessage",
-    "HttpMethod": "PATCH",
-    "IsController": true,
-    "Order": 0,
-    "Parameters": [
-      {
-        "Name": "userId",
-        "Type": "System.Int32",
-        "IsRequired": false
-      },
-      {
-        "Name": "appointment",
-        "Type": "MediLink_BackEnd.Models.Appointment",
+        "Name": "dto",
+        "Type": "MediLink_BackEnd.Data.DTOs.MessageDTO",
         "IsRequired": true
       }
     ],

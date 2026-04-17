@@ -1,0 +1,82 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             xmlns:calendar="clr-namespace:Syncfusion.Maui.Calendar;assembly=Syncfusion.Maui.Calendar"
+             x:Class="MediLine_FrontEnd.Pages.UserSchedulePage"
+             BackgroundColor="#13131F"
+             Title="My Schedule">
+
+    <Grid RowDefinitions="Auto,*,Auto">
+
+        <!-- Calendar -->
+        <calendar:SfCalendar Grid.Row="0"
+                             x:Name="ScheduleCalendar"
+                             BackgroundColor="#2D2B55"
+                             SelectionMode="Single"
+                             SelectionChanged="OnDateSelected">
+            <calendar:SfCalendar.HeaderView>
+                <calendar:CalendarHeaderView TextStyle="{calendar:CalendarTextStyle TextColor=White, FontSize=18}"/>
+            </calendar:SfCalendar.HeaderView>
+        </calendar:SfCalendar>
+
+        <!-- Events for selected day -->
+        <VerticalStackLayout Grid.Row="1" Padding="20" Spacing="10">
+
+            <Label x:Name="SelectedDateLabel"
+                   Text="Today's Events"
+                   FontSize="16"
+                   FontAttributes="Bold"
+                   TextColor="White"/>
+
+            <CollectionView x:Name="EventsCollection"
+                            EmptyView="No events on this day 🎉">
+                <CollectionView.ItemTemplate>
+                    <DataTemplate>
+                        <Border Margin="0,5"
+                                Padding="15"
+                                StrokeShape="RoundRectangle 12">
+                            <Border.BackgroundColor>
+                                <Binding Path="EventColor"/>
+                            </Border.BackgroundColor>
+                            <Grid ColumnDefinitions="Auto,*" ColumnSpacing="10">
+                                <VerticalStackLayout Grid.Column="0"
+                                                     WidthRequest="60">
+                                    <Label Text="{Binding StartTime, StringFormat='{0:HH:mm}'}"
+                                           TextColor="White"
+                                           FontAttributes="Bold"
+                                           HorizontalOptions="Center"/>
+                                    <Label Text="{Binding EndTime, StringFormat='{0:HH:mm}'}"
+                                           TextColor="#CCCCCC"
+                                           FontSize="11"
+                                           HorizontalOptions="Center"/>
+                                </VerticalStackLayout>
+                                <VerticalStackLayout Grid.Column="1" Spacing="4">
+                                    <Label Text="{Binding Title}"
+                                           TextColor="White"
+                                           FontAttributes="Bold"/>
+                                    <Label Text="{Binding Description}"
+                                           TextColor="#CCCCCC"
+                                           FontSize="12"/>
+                                    <Label Text="{Binding EventType}"
+                                           TextColor="#A0A0FF"
+                                           FontSize="11"/>
+                                </VerticalStackLayout>
+                            </Grid>
+                        </Border>
+                    </DataTemplate>
+                </CollectionView.ItemTemplate>
+            </CollectionView>
+
+        </VerticalStackLayout>
+
+        <!-- Add event button -->
+        <Button Grid.Row="2"
+                Text="+ Add Event"
+                BackgroundColor="#6C63FF"
+                TextColor="White"
+                CornerRadius="0"
+                HeightRequest="50"
+                Clicked="OnAddEventClicked"/>
+
+    </Grid>
+</ContentPage>

@@ -14,25 +14,22 @@
                    TextColor="White"
                    Margin="0,0,0,10"/>
 
-            <!-- IDs -->
-            <Label Text="PATIENT &amp; DOCTOR"
+            <!-- Doctor Selection -->
+            <Label Text="SELECT DOCTOR"
                    TextColor="#6C63FF"
                    FontSize="12"
                    FontAttributes="Bold"/>
 
-            <Entry x:Name="PatientIDEntry"
-                   Placeholder="Patient ID"
-                   PlaceholderColor="#606070"
-                   TextColor="White"
-                   BackgroundColor="#1E1E2E"
-                   Keyboard="Numeric"/>
-
-            <Entry x:Name="DoctorIDEntry"
-                   Placeholder="Doctor ID"
-                   PlaceholderColor="#606070"
-                   TextColor="White"
-                   BackgroundColor="#1E1E2E"
-                   Keyboard="Numeric"/>
+            <Border BackgroundColor="#1E1E2E"
+                    StrokeShape="RoundRectangle 8"
+                    Padding="5,0">
+                <Picker x:Name="DoctorPicker"
+                        Title="Select a doctor..."
+                        TitleColor="#606070"
+                        TextColor="White"
+                        BackgroundColor="Transparent"
+                        ItemDisplayBinding="{Binding FullName}"/>
+            </Border>
 
             <!-- Request Details -->
             <Label Text="REQUEST DETAILS"

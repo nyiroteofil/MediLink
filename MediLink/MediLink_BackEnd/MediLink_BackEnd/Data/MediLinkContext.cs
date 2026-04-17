@@ -26,6 +26,8 @@ namespace MediLink_BackEnd.Data
         public DbSet<Appointment> Appointments { get; set; }
         public DbSet<CustomEvent> CustomEvents { get; set; }
         public DbSet<AppointmentRequest> AppointmentRequests { get; set; }
+        public DbSet<Chat> Chats { get; set; }
+        public DbSet<Message> Messages { get; set; }
 
         // Specifying abiguous database relationships with Fluent API
 
@@ -100,6 +102,32 @@ namespace MediLink_BackEnd.Data
                 .HasMany(m => m.Ingredients)
                 .WithMany(i => i.UsedInMedications)
                 .UsingEntity(j => j.ToTable("MedicationIngredient"));
+
+
+            // Messageing set up
+            mb.Entity<Chat>()
+                .HasOne(c => c.Patient)
+                .WithMany()
+                .HasForeignKey(c => c.PatientID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            mb.Entity<Chat>()
+                .HasOne(c => c.Doctor)
+                .WithMany()
+                .HasForeignKey(c => c.DoctorID)
+                .OnDelete(DeleteBehavior.Restrict);
+
+            mb.Entity<Message>()
+                .HasOne(m => m.Chat)
+                .WithMany(c => c.Messages)
+                .HasForeignKey(m => m.ChatID)
+                .OnDelete(DeleteBehavior.Cascade);
+
+            mb.Entity<Message>()
+                .HasOne(m => m.Sender)
+                .WithMany()
+                .HasForeignKey(m => m.SenderID)
+                .OnDelete(DeleteBehavior.Restrict);
 
         }
     }

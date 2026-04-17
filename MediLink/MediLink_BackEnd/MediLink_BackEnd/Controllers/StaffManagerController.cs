@@ -7,5 +7,7 @@ namespace MediLink_BackEnd.Controllers
     [ApiController]
     public class StaffManagerController : ControllerBase
     {
+
+
     }
 }

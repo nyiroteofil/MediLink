@@ -12,8 +12,14 @@ namespace MediLine_FrontEnd
         {
             InitializeComponent();
             _apiHandler = apiHandler;
-         //   var currentTheme = Application.Current!.RequestedTheme;
-         //   ThemeSegmentedControl.SelectedIndex = currentTheme == AppTheme.Light ? 0 : 1;
+            //   var currentTheme = Application.Current!.RequestedTheme;
+            //   ThemeSegmentedControl.SelectedIndex = currentTheme == AppTheme.Light ? 0 : 1;
+
+            // Register detail page route
+            Routing.RegisterRoute("appointmentRequestDetail",
+                typeof(AppointmentRequestDetailPage));
+            Routing.RegisterRoute("conversation",
+                typeof(ConversationPage));
         }
         public static async Task DisplaySnackbarAsync(string message)
         {
@@ -61,26 +67,31 @@ namespace MediLine_FrontEnd
             RequestAppointmentContent.IsVisible = false;
             ViewAppointmentsContent.IsVisible = false;
             AdminContent.IsVisible = false;
+            ScheduleContent.IsVisible = false;
 
             switch (role)
             {
                 case "Patient":
+                    ScheduleContent.IsVisible = true;
                     RequestAppointmentContent.IsVisible = true;
                     ViewAppointmentsContent.IsVisible = true;
                     break;
 
                 case "SpecialistDoctor":
+                    ScheduleContent.IsVisible = true;
                     RegisterPatientContent.IsVisible = true;
                     ViewAppointmentsContent.IsVisible = true;
                     break;
 
                 case "MedicalAssistant":
+                    ScheduleContent.IsVisible = true;
                     RegisterPatientContent.IsVisible = true;
                     RequestAppointmentContent.IsVisible = true;
                     ViewAppointmentsContent.IsVisible = true;
                     break;
 
                 case "Administrator":
+                    ScheduleContent.IsVisible = true;
                     RegisterPatientContent.IsVisible = true;
                     RequestAppointmentContent.IsVisible = true;
                     ViewAppointmentsContent.IsVisible = true;

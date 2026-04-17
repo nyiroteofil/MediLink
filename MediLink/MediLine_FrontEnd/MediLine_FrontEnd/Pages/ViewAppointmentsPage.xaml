@@ -3,46 +3,16 @@
              xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
              x:Class="MediLine_FrontEnd.Pages.ViewAppointmentsPage"
              BackgroundColor="#13131F"
-             Title="View Appointments">
+             Title="My Appointments">
 
     <VerticalStackLayout Padding="30" Spacing="15">
 
-        <Label Text="View Appointments"
+        <Label Text="My Appointments"
                FontSize="24"
                FontAttributes="Bold"
                TextColor="White"
                Margin="0,0,0,10"/>
 
-        <!-- Search bar -->
-        <Grid ColumnDefinitions="*, Auto" ColumnSpacing="10">
-            <Entry x:Name="UserIDEntry"
-                   Grid.Column="0"
-                   Placeholder="Enter Patient or Doctor ID"
-                   PlaceholderColor="#606070"
-                   TextColor="White"
-                   BackgroundColor="#1E1E2E"
-                   Keyboard="Numeric"/>
-            <Button x:Name="SearchButton"
-                    Grid.Column="1"
-                    Text="Search"
-                    BackgroundColor="#6C63FF"
-                    TextColor="White"
-                    CornerRadius="8"
-                    Clicked="OnSearchClicked"/>
-        </Grid>
-
-        <!-- Role selector -->
-        <HorizontalStackLayout Spacing="10">
-            <RadioButton x:Name="PatientRadio"
-                         Content="Patient"
-                         TextColor="White"
-                         IsChecked="True"/>
-            <RadioButton x:Name="DoctorRadio"
-                         Content="Doctor"
-                         TextColor="White"/>
-        </HorizontalStackLayout>
-
-        <!-- Results -->
         <CollectionView x:Name="AppointmentsCollection"
                         EmptyView="No appointments found.">
             <CollectionView.ItemTemplate>
@@ -72,5 +42,4 @@
         </CollectionView>
 
     </VerticalStackLayout>
-
 </ContentPage>

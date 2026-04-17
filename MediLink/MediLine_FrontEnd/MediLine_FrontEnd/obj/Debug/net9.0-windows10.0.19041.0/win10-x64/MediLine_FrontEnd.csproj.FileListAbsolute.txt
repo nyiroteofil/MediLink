@@ -529,3 +529,7 @@ D:\Szakdoogozat_BSc\MediLink\MediLine_FrontEnd\MediLine_FrontEnd\obj\Debug\net9.
 D:\Szakdoogozat_BSc\MediLink\MediLine_FrontEnd\MediLine_FrontEnd\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt
 D:\Szakdoogozat_BSc\MediLink\MediLine_FrontEnd\MediLine_FrontEnd\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\qualifiers.txt.intermediate
 D:\Szakdoogozat_BSc\MediLink\MediLine_FrontEnd\MediLine_FrontEnd\obj\Debug\net9.0-windows10.0.19041.0\win10-x64\MultipleQualifiersPerDimensionFound.txt
+D:\Szakdoogozat_BSc\MediLink\MediLine_FrontEnd\MediLine_FrontEnd\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Syncfusion.Licensing.dll
+D:\Szakdoogozat_BSc\MediLink\MediLine_FrontEnd\MediLine_FrontEnd\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Syncfusion.Maui.Calendar.dll
+D:\Szakdoogozat_BSc\MediLink\MediLine_FrontEnd\MediLine_FrontEnd\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Syncfusion.Maui.Core.dll
+D:\Szakdoogozat_BSc\MediLink\MediLine_FrontEnd\MediLine_FrontEnd\bin\Debug\net9.0-windows10.0.19041.0\win10-x64\Syncfusion.Maui.Popup.dll

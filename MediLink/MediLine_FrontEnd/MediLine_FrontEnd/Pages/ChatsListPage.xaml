@@ -1,0 +1,58 @@
+<?xml version="1.0" encoding="utf-8" ?>
+<ContentPage xmlns="http://schemas.microsoft.com/dotnet/2021/maui"
+             xmlns:x="http://schemas.microsoft.com/winfx/2009/xaml"
+             x:Class="MediLine_FrontEnd.Pages.ChatsListPage"
+             BackgroundColor="#13131F"
+             Title="Messages">
+
+    <VerticalStackLayout Padding="20" Spacing="15">
+
+        <Label Text="Messages"
+               FontSize="24"
+               FontAttributes="Bold"
+               TextColor="White"/>
+
+        <CollectionView x:Name="ChatsCollection"
+                        EmptyView="No conversations yet 💬">
+            <CollectionView.ItemTemplate>
+                <DataTemplate>
+                    <Border BackgroundColor="#1E1E2E"
+                            StrokeShape="RoundRectangle 12"
+                            Padding="15" Margin="0,5">
+                        <Grid ColumnDefinitions="Auto,*,Auto">
+                            <Border Grid.Column="0"
+                                    BackgroundColor="#6C63FF"
+                                    StrokeShape="RoundRectangle 25"
+                                    HeightRequest="45"
+                                    WidthRequest="45"
+                                    Margin="0,0,10,0">
+                                <Label Text="👤"
+                                       FontSize="20"
+                                       HorizontalOptions="Center"
+                                       VerticalOptions="Center"/>
+                            </Border>
+                            <VerticalStackLayout Grid.Column="1"
+                     VerticalOptions="Center">
+                                <Label Text="{Binding ContactName}"
+                                   TextColor="White"
+                                   FontAttributes="Bold"/>
+                                <Label Text="Tap to open conversation"
+                                   TextColor="#A0A0B0"
+                                   FontSize="12"/>  
+                            </VerticalStackLayout>
+                            <Label Grid.Column="2"
+                                   Text=">"
+                                   TextColor="#6C63FF"
+                                   VerticalOptions="Center"/>
+                        </Grid>
+                        <Border.GestureRecognizers>
+                            <TapGestureRecognizer CommandParameter="{Binding ID}"
+                                                  Tapped="OnChatTapped"/>
+                        </Border.GestureRecognizers>
+                    </Border>
+                </DataTemplate>
+            </CollectionView.ItemTemplate>
+        </CollectionView>
+
+    </VerticalStackLayout>
+</ContentPage>

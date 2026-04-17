@@ -79,6 +79,27 @@
     ContentTemplate="{DataTemplate pages:AdminUserManagerPage}"
     Route="admin"/>
 
+    <ShellContent
+    x:Name="AppointmentRequestsContent"
+    Title="Appointment Requests"
+    FlyoutIcon="📨"
+    ContentTemplate="{DataTemplate pages:AppointmentRequestsPage}"
+    Route="requests"/>
+
+    <ShellContent
+    x:Name="ScheduleContent"
+    Title="My Schedule"
+    FlyoutIcon="📆"
+    ContentTemplate="{DataTemplate pages:UserSchedulePage}"
+    Route="schedule"/>
+
+    <ShellContent
+    x:Name="ChatsContent"
+    Title="Messages"
+    FlyoutIcon="💬"
+    ContentTemplate="{DataTemplate pages:ChatsListPage}"
+    Route="chats"/>
+
     <Shell.FlyoutFooter>
         <StackLayout BackgroundColor="#1E1E2E" Padding="15" Spacing="10">
 

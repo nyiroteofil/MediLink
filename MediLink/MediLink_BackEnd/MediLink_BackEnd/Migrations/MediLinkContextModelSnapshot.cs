@@ -85,6 +85,32 @@ namespace MediLink_BackEnd.Migrations
                     b.ToTable("AppointmentRequests");
                 });
 
+            modelBuilder.Entity("MediLink_BackEnd.Models.Chat", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<DateTime>("CreatedAt")
+                        .HasColumnType("datetime2");
+
+                    b.Property<int>("DoctorID")
+                        .HasColumnType("int");
+
+                    b.Property<int>("PatientID")
+                        .HasColumnType("int");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("DoctorID");
+
+                    b.HasIndex("PatientID");
+
+                    b.ToTable("Chats");
+                });
+
             modelBuilder.Entity("MediLink_BackEnd.Models.ContactInfo", b =>
                 {
                     b.Property<int>("ID")
@@ -294,6 +320,39 @@ namespace MediLink_BackEnd.Migrations
                     b.HasIndex("DiagnosisID");
 
                     b.ToTable("Medications");
+                });
+
+            modelBuilder.Entity("MediLink_BackEnd.Models.Message", b =>
+                {
+                    b.Property<int>("ID")
+                        .ValueGeneratedOnAdd()
+                        .HasColumnType("int");
+
+                    SqlServerPropertyBuilderExtensions.UseIdentityColumn(b.Property<int>("ID"));
+
+                    b.Property<int>("ChatID")
+                        .HasColumnType("int");
+
+                    b.Property<string>("Content")
+                        .IsRequired()
+                        .HasColumnType("nvarchar(max)");
+
+                    b.Property<bool>("IsRead")
+                        .HasColumnType("bit");
+
+                    b.Property<int>("SenderID")
+                        .HasColumnType("int");
+
+                    b.Property<DateTime>("SentAt")
+                        .HasColumnType("datetime2");
+
+                    b.HasKey("ID");
+
+                    b.HasIndex("ChatID");
+
+                    b.HasIndex("SenderID");
+
+                    b.ToTable("Messages");
                 });
 
             modelBuilder.Entity("MediLink_BackEnd.Models.Referal", b =>
@@ -623,6 +682,25 @@ namespace MediLink_BackEnd.Migrations
                     b.Navigation("SpecialistDoctor");
                 });
 
+            modelBuilder.Entity("MediLink_BackEnd.Models.Chat", b =>
+                {
+                    b.HasOne("MediLink_BackEnd.Models.SpecialistDoctor", "Doctor")
+                        .WithMany()
+                        .HasForeignKey("DoctorID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.HasOne("MediLink_BackEnd.Models.Patient", "Patient")
+                        .WithMany()
+                        .HasForeignKey("PatientID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Doctor");
+
+                    b.Navigation("Patient");
+                });
+
             modelBuilder.Entity("MediLink_BackEnd.Models.Diagnosis", b =>
                 {
                     b.HasOne("MediLink_BackEnd.Models.Patient", "Patient")
@@ -646,6 +724,25 @@ namespace MediLink_BackEnd.Migrations
                     b.HasOne("MediLink_BackEnd.Models.Diagnosis", null)
                         .WithMany("PrescribedMedications")
                         .HasForeignKey("DiagnosisID");
+                });
+
+            modelBuilder.Entity("MediLink_BackEnd.Models.Message", b =>
+                {
+                    b.HasOne("MediLink_BackEnd.Models.Chat", "Chat")
+                        .WithMany("Messages")
+                        .HasForeignKey("ChatID")
+                        .OnDelete(DeleteBehavior.Cascade)
+                        .IsRequired();
+
+                    b.HasOne("MediLink_BackEnd.Models.User", "Sender")
+                        .WithMany()
+                        .HasForeignKey("SenderID")
+                        .OnDelete(DeleteBehavior.Restrict)
+                        .IsRequired();
+
+                    b.Navigation("Chat");
+
+                    b.Navigation("Sender");
                 });
 
             modelBuilder.Entity("MediLink_BackEnd.Models.Referal", b =>
@@ -890,6 +987,11 @@ namespace MediLink_BackEnd.Migrations
                         .IsRequired();
 
                     b.Navigation("DataSheet");
+                });
+
+            modelBuilder.Entity("MediLink_BackEnd.Models.Chat", b =>
+                {
+                    b.Navigation("Messages");
                 });
 
             modelBuilder.Entity("MediLink_BackEnd.Models.Diagnosis", b =>

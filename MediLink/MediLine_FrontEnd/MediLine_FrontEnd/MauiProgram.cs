@@ -1,5 +1,6 @@
 ﻿using CommunityToolkit.Maui;
 using Microsoft.Extensions.Logging;
+using Syncfusion.Maui.Core.Hosting;
 using Syncfusion.Maui.Toolkit.Hosting;
 
 namespace MediLine_FrontEnd
@@ -33,6 +34,8 @@ namespace MediLine_FrontEnd
             Environment.SetEnvironmentVariable("MEDILINK_URL", "https://localhost:7056/api");
 #endif
 
+            builder.UseMauiApp<App>().ConfigureSyncfusionCore();
+
             builder.Services.AddSingleton<ApiHandler>();
 
             builder.Services.AddSingleton<AppShell>();
@@ -42,6 +45,9 @@ namespace MediLine_FrontEnd
             builder.Services.AddTransient<RequestAppointmentPage>();
             builder.Services.AddTransient<ViewAppointmentsPage>();
             builder.Services.AddTransient<AdminUserManagerPage>();
+            builder.Services.AddTransient<UserSchedulePage>();
+            builder.Services.AddTransient<ConversationPage>();
+            builder.Services.AddTransient<ChatsListPage>();
 
             return builder.Build();
         }

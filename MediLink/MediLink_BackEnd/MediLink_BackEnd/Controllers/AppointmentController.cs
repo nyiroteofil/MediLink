@@ -11,7 +11,7 @@ using System.Net;
 
 namespace MediLink_BackEnd.Controllers
 {
-    [Authorize(Roles = "Admin,SpecialistDoctor,MedicalAssistant")]
+    [Authorize(Roles = "Patient,Admin,SpecialistDoctor,MedicalAssistant")]
     [Route("api/Appointments/[action]")]
     [ApiController]
     public class AppointmentController : ControllerBase
@@ -27,6 +27,7 @@ namespace MediLink_BackEnd.Controllers
 
         // GET: api/<AppointmentController>
         [HttpPost]
+        [AllowAnonymousAttribute]
         public async Task<IActionResult> RequestAppointment(AppointmentRequestDTO dto)
         {
             try
@@ -71,6 +72,33 @@ namespace MediLink_BackEnd.Controllers
             }
         }
 
-        
+        [HttpGet]
+        public async Task<IActionResult> GetPendingAppointments(int userID)
+        {
+            List<AppointmentRequestResponseDTO> requests;
+
+            try
+            {
+                requests = await _appointmentService.GetPendingAppointmentRequests(userID);
+                return Ok(requests);
+            }
+            catch (Exception ex) 
+            { 
+                return StatusCode(500, ex.ToString());
+            }
+        }
+
+        // Doesn't need the doctor's ID as the request class has it
+        [HttpPost]
+        public async Task<IActionResult> AcceptAppointment(int requestID) 
+        {
+            throw new NotImplementedException();
+        }
+
+        [HttpGet]
+        public async Task<IActionResult> GetPatientPendingAppointments(int docID)
+        {
+            throw new NotImplementedException();
+        }
     }
 }

@@ -1,6 +1,6 @@
 {
   "version": 2,
-  "dgSpecHash": "ucaCyKpFHro=",
+  "dgSpecHash": "BVliPRlOof4=",
   "success": true,
   "projectFilePath": "D:\\Szakdoogozat_BSc\\MediLink\\MediLine_FrontEnd\\MediLine_FrontEnd\\MediLine_FrontEnd.csproj",
   "expectedPackageFiles": [
@@ -43,6 +43,10 @@
     "C:\\Users\\portr\\.nuget\\packages\\sqlitepclraw.lib.e_sqlite3.android\\2.1.10\\sqlitepclraw.lib.e_sqlite3.android.2.1.10.nupkg.sha512",
     "C:\\Users\\portr\\.nuget\\packages\\sqlitepclraw.provider.e_sqlite3\\2.1.10\\sqlitepclraw.provider.e_sqlite3.2.1.10.nupkg.sha512",
     "C:\\Users\\portr\\.nuget\\packages\\sqlitepclraw.provider.sqlite3\\2.1.10\\sqlitepclraw.provider.sqlite3.2.1.10.nupkg.sha512",
+    "C:\\Users\\portr\\.nuget\\packages\\syncfusion.licensing\\33.1.49\\syncfusion.licensing.33.1.49.nupkg.sha512",
+    "C:\\Users\\portr\\.nuget\\packages\\syncfusion.maui.calendar\\33.1.49\\syncfusion.maui.calendar.33.1.49.nupkg.sha512",
+    "C:\\Users\\portr\\.nuget\\packages\\syncfusion.maui.core\\33.1.49\\syncfusion.maui.core.33.1.49.nupkg.sha512",
+    "C:\\Users\\portr\\.nuget\\packages\\syncfusion.maui.popup\\33.1.49\\syncfusion.maui.popup.33.1.49.nupkg.sha512",
     "C:\\Users\\portr\\.nuget\\packages\\syncfusion.maui.toolkit\\1.0.5\\syncfusion.maui.toolkit.1.0.5.nupkg.sha512",
     "C:\\Users\\portr\\.nuget\\packages\\system.buffers\\4.4.0\\system.buffers.4.4.0.nupkg.sha512",
     "C:\\Users\\portr\\.nuget\\packages\\system.identitymodel.tokens.jwt\\8.17.0\\system.identitymodel.tokens.jwt.8.17.0.nupkg.sha512",

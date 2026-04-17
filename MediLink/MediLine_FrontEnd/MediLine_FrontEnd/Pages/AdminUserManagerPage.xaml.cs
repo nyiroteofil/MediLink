@@ -159,7 +159,7 @@ namespace MediLine_FrontEnd.Pages
 
             if (PatientRadio.IsChecked)
             {
-                endpoint = "/User/AddPatientUser";
+                endpoint = "/UserManager/AddPatientUser";
                 dto = new
                 {
                     UserName = UsernameEntry.Text,
@@ -177,7 +177,7 @@ namespace MediLine_FrontEnd.Pages
             else
             {
                 endpoint = DoctorRadio.IsChecked
-                    ? "/UserManager/AddDoctorUser"
+                    ? "/UserManager/AddSpecialistDoctorUser"
                     : AssistantRadio.IsChecked
                         ? "/UserManager/AddMedicalAssistantUser"
                         : "/UserManager/AddAdministratorUser";

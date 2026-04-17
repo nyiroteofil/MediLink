@@ -27,8 +27,6 @@ namespace MediLine_FrontEnd.Pages
             string role = await _apiHandler.GetUserRole();
             int userID = await _apiHandler.GetUserID();
 
-            // Set greeting
-            GreetingLabel.Text = $"Good morning! 👋";
             RoleLabel.Text = role;
 
             if (role == "SpecialistDoctor")
@@ -46,6 +44,15 @@ namespace MediLine_FrontEnd.Pages
             await LoadTodaysEvents(userID);
         }
 
+        private async Task LoadDoctorWidgets(int docID)
+        {
+            // Hardcoded for demo
+            PendingRequestsLabel.Text = "3";
+            WeekAppointmentsLabel.Text = "8";
+            ActivePatientsLabel.Text = "24";
+        }
+
+        /*
         private async Task LoadDoctorWidgets(int docID)
         {
 
@@ -90,6 +97,8 @@ namespace MediLine_FrontEnd.Pages
             }
         }
 
+        */
+
         private async Task LoadPatientWidgets(int patientID)
         {
             // Next appointment
@@ -107,9 +116,32 @@ namespace MediLine_FrontEnd.Pages
             }
         }
 
+        /*
         private async Task LoadTodaysEvents(int userID)
         {
             // TODO: implement when today's events endpoint is ready
+        }
+        */
+
+        private async Task LoadTodaysEvents(int userID)
+        {
+            var todayEvents = new List<object>
+    {
+        new {
+            StartTime = DateTime.Today.AddHours(9),
+            Description = "Páciens Példa — Lower back pain"
+        },
+        new {
+            StartTime = DateTime.Today.AddHours(11),
+            Description = "János Kovács — Blood pressure check"
+        },
+        new {
+            StartTime = DateTime.Today.AddHours(14),
+            Description = "Mária Nagy — Follow-up consultation"
+        }
+    };
+
+            TodaysEventsCollection.ItemsSource = todayEvents;
         }
     }
 }

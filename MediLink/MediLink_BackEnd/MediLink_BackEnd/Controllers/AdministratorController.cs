@@ -7,7 +7,7 @@ using System.Net;
 
 namespace MediLink_BackEnd.Controllers
 {
-    [Authorize(Roles = "Administrator")]
+    [Authorize]
     [Route("api/[controller]/[action]")]
     [ApiController]
     public class AdministratorController : ControllerBase

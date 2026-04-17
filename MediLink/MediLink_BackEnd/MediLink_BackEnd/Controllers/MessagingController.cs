@@ -1,42 +1,81 @@
 ﻿using MediLink_BackEnd.Models;
-using Microsoft.AspNetCore.Http;
+using MediLink_BackEnd.Data.DTOs;
+using MediLink_BackEnd.Services;
+using Microsoft.AspNetCore.Authorization;
 using Microsoft.AspNetCore.Mvc;
-using System.Net;
 
-namespace MediLink_BackEnd.Controllers
+[Authorize]
+[Route("api/[controller]/[action]")]
+[ApiController]
+public class MessageController : ControllerBase
 {
-    [Route("api/[controller]/[Action]")]
-    [ApiController]
-    public class MessagingController : ControllerBase
+    private readonly IMessgageService _messageService;
+
+    public MessageController(IMessgageService messageService)
     {
-        [HttpPost]
-        public IActionResult CreateUserMessage(int userId, Appointment appointment)
-        {
-            return Ok(HttpStatusCode.Created);
-        }
+        _messageService = messageService;
+    }
 
-        [HttpPatch]
-        public IActionResult UpdateMessage(int userId, Appointment appointment)
+    [HttpPost]
+    public async Task<IActionResult> PostMessage([FromBody] MessageDTO dto)
+    {
+        try
         {
-            return Ok();
-        }
+            Message message = new Message
+            {
+                ChatID = dto.ChatID,
+                SenderID = dto.SenderID,
+                Content = dto.Content
+            };
 
-        [HttpPost]
-        public IActionResult CreateGroupMessage(int userId, MedicationReminder reminder)
-        {
-            return Ok(HttpStatusCode.Created);
+            Message sent = await _messageService.PostMessage(message);
+            return Ok(sent);
         }
-
-        [HttpPost]
-        public IActionResult CreateCustomExample(int userId, CustomEvent appointment)
+        catch (Exception ex)
         {
-            return Ok(HttpStatusCode.Created);
+            return StatusCode(500, ex.ToString());
         }
+    }
 
-        [HttpPatch]
-        public IActionResult UpdateExample(int userId, Appointment appointment)
+    [HttpGet]
+    public async Task<IActionResult> GetMessagesFromChat(int chatID)
+    {
+        try
         {
-            return Ok();
+            List<Message> messages = await _messageService.GetMessagesFromChat(chatID);
+            return Ok(messages);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, ex.ToString());
+        }
+    }
+
+    [HttpPost]
+    public async Task<IActionResult> CreateChat(int docID, int patientID)
+    {
+        try
+        {
+            Chat chat = await _messageService.CreateChat(docID, patientID);
+            return Ok(chat);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, ex.ToString());
+        }
+    }
+
+    [HttpGet]
+    public async Task<IActionResult> GetUserChats(int userID)
+    {
+        try
+        {
+            List<Chat> chats = await _messageService.GetUserChats(userID);
+            return Ok(chats);
+        }
+        catch (Exception ex)
+        {
+            return StatusCode(500, ex.ToString());
         }
     }
 }

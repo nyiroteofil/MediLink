@@ -43,6 +43,24 @@ build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.Ad
 build_metadata.AdditionalFiles.TargetPath = Pages\AdminUserManagerPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\AdminUserManagerPage.xaml
 
+[D:/Szakdoogozat_BSc/MediLink/MediLine_FrontEnd/MediLine_FrontEnd/Pages/AppointmentRequestDetailPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.AppointmentRequestDetailPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\AppointmentRequestDetailPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\AppointmentRequestDetailPage.xaml
+
+[D:/Szakdoogozat_BSc/MediLink/MediLine_FrontEnd/MediLine_FrontEnd/Pages/AppointmentRequestsPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.AppointmentRequestsPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\AppointmentRequestsPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\AppointmentRequestsPage.xaml
+
+[D:/Szakdoogozat_BSc/MediLink/MediLine_FrontEnd/MediLine_FrontEnd/Pages/ChatsListPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.ChatsListPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\ChatsListPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\ChatsListPage.xaml
+
 [D:/Szakdoogozat_BSc/MediLink/MediLine_FrontEnd/MediLine_FrontEnd/Pages/Controls/AddButton.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.Controls.AddButton.xaml
@@ -72,6 +90,12 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.Controls.TaskView.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\Controls\TaskView.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\Controls\TaskView.xaml
+
+[D:/Szakdoogozat_BSc/MediLink/MediLine_FrontEnd/MediLine_FrontEnd/Pages/ConversationPage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.ConversationPage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\ConversationPage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\ConversationPage.xaml
 
 [D:/Szakdoogozat_BSc/MediLink/MediLine_FrontEnd/MediLine_FrontEnd/Pages/DashboardPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
@@ -126,6 +150,12 @@ build_metadata.AdditionalFiles.GenKind = Xaml
 build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.TaskDetailPage.xaml
 build_metadata.AdditionalFiles.TargetPath = Pages\TaskDetailPage.xaml
 build_metadata.AdditionalFiles.RelativePath = Pages\TaskDetailPage.xaml
+
+[D:/Szakdoogozat_BSc/MediLink/MediLine_FrontEnd/MediLine_FrontEnd/Pages/UserSchedulePage.xaml]
+build_metadata.AdditionalFiles.GenKind = Xaml
+build_metadata.AdditionalFiles.ManifestResourceName = MediLine_FrontEnd.Pages.UserSchedulePage.xaml
+build_metadata.AdditionalFiles.TargetPath = Pages\UserSchedulePage.xaml
+build_metadata.AdditionalFiles.RelativePath = Pages\UserSchedulePage.xaml
 
 [D:/Szakdoogozat_BSc/MediLink/MediLine_FrontEnd/MediLine_FrontEnd/Pages/ViewAppointmentsPage.xaml]
 build_metadata.AdditionalFiles.GenKind = Xaml
