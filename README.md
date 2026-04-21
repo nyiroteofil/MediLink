@@ -17,7 +17,7 @@ and real-time doctor-patient messaging.
 
  Screenshots
 <img width="1920" height="1032" alt="Dashboard" src="https://github.com/user-attachments/assets/6b5bcc89-a145-4c44-87fb-f4bcf9d4e2ad" /><br>
-##<img width="1920" height="1080" alt="User Schedule Editor" src="https://github.com/user-attachments/assets/2856b571-2f7e-48c5-8e5a-7a5279d04c57" /><br>
+<img width="1920" height="1080" alt="User Schedule Editor" src="https://github.com/user-attachments/assets/2856b571-2f7e-48c5-8e5a-7a5279d04c57" /><br>
 <img width="1920" height="1032" alt="Administrator Page" src="https://github.com/user-attachments/assets/acbf7a9e-e9c1-4e26-a48a-492a55ef08b0" />
 
 
