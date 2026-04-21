@@ -32,7 +32,7 @@ namespace MediLink_BackEnd.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return StatusCode(500, $"Server error while tryint ot get active administrators: {ex.Message}");
+                return StatusCode(500, "\"An internal server error occurred.\"");
             }
         }
 
@@ -49,7 +49,7 @@ namespace MediLink_BackEnd.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return StatusCode(500, $"Server error while tryint ot get active assistnats: {ex.Message}");
+                return StatusCode(500, "\"An internal server error occurred.\"");
             }
         }
 
@@ -66,7 +66,7 @@ namespace MediLink_BackEnd.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return StatusCode(500, $"Server error while tryint ot get active doctors: {ex.Message}");
+                return StatusCode(500, "\"An internal server error occurred.\"");
             }
         }
 
@@ -83,7 +83,7 @@ namespace MediLink_BackEnd.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return StatusCode(500, $"Server error while tryint ot get active Patients: {ex.Message}");
+                return StatusCode(500, "\"An internal server error occurred.\"");
             }
         }
 
@@ -100,7 +100,7 @@ namespace MediLink_BackEnd.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return StatusCode(500, $"Server error while tryint ot get suspended administrators: {ex.Message}");
+                return StatusCode(500, "\"An internal server error occurred.\"");
             }
         }
 
@@ -117,7 +117,7 @@ namespace MediLink_BackEnd.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return StatusCode(500, $"Server error while tryint ot get suspended assistnats: {ex.Message}");
+                return StatusCode(500, "\"An internal server error occurred.\"");
             }
         }
 
@@ -134,7 +134,7 @@ namespace MediLink_BackEnd.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return StatusCode(500, $"Server error while tryint ot get suspended doctors: {ex.Message}");
+                return StatusCode(500, "\"An internal server error occurred.\"");
             }
         }
 
@@ -151,7 +151,7 @@ namespace MediLink_BackEnd.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return StatusCode(500, $"Server error while tryint ot get suspended Patients: {ex.Message}");
+                return StatusCode(500, "\"An internal server error occurred.\"");
             }
         }
     }

@@ -4,7 +4,7 @@ using System.Linq;
 using System.Text;
 using System.Threading.Tasks;
 
-namespace MediLine_FrontEnd.Models
+namespace MediLine_FrontEnd.Data
 {
     internal class UserSummaryDTO
     {

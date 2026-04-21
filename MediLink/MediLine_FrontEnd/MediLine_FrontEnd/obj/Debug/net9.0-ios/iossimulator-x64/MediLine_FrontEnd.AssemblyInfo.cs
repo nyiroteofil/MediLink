@@ -14,7 +14,7 @@ using System.Reflection;
 [assembly: System.Reflection.AssemblyCompanyAttribute("MediLine_FrontEnd")]
 [assembly: System.Reflection.AssemblyConfigurationAttribute("Debug")]
 [assembly: System.Reflection.AssemblyFileVersionAttribute("1.0.0.0")]
-[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+75879f1efed4316aa6ec2827058f0777e884299d")]
+[assembly: System.Reflection.AssemblyInformationalVersionAttribute("1.0+085b5b9111b3ec835d850d525224fe5e823eb54f")]
 [assembly: System.Reflection.AssemblyProductAttribute("MediLine_FrontEnd")]
 [assembly: System.Reflection.AssemblyTitleAttribute("MediLine_FrontEnd")]
 [assembly: System.Reflection.AssemblyVersionAttribute("1.0.0.0")]

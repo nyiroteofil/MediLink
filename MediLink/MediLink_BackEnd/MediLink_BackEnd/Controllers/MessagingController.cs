@@ -33,7 +33,7 @@ public class MessageController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, ex.ToString());
+            return StatusCode(500, "\"An internal server error occurred.\"");
         }
     }
 
@@ -47,7 +47,7 @@ public class MessageController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, ex.ToString());
+            return StatusCode(500, "\"An internal server error occurred.\"");
         }
     }
 
@@ -75,7 +75,7 @@ public class MessageController : ControllerBase
         }
         catch (Exception ex)
         {
-            return StatusCode(500, ex.ToString());
+            return StatusCode(500, "\"An internal server error occurred.\"");
         }
     }
 }

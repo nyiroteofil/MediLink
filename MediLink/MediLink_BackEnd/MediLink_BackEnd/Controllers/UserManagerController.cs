@@ -35,7 +35,7 @@ namespace MediLink_BackEnd.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex);
-                return StatusCode(500, $"An error occured during administrator creation: {ex.Message}");
+                return StatusCode(500, "\"An internal server error occurred.\"");
             }
         }
 
@@ -49,7 +49,7 @@ namespace MediLink_BackEnd.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.ToString());
+                return StatusCode(500, "\"An internal server error occurred.\"");
             }
         }
 
@@ -64,7 +64,7 @@ namespace MediLink_BackEnd.Controllers
             }
             catch (Exception ex)
             {
-                return StatusCode(500, ex.ToString());
+                return StatusCode(500, "\"An internal server error occurred.\"");
             }
         }
 
@@ -80,7 +80,7 @@ namespace MediLink_BackEnd.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return BadRequest(ex.ToString());
+                return BadRequest("\"An error occured while trying to log in the user.\"");
             }
 
             return Ok(loginToken);

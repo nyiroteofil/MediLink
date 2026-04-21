@@ -32,7 +32,7 @@ namespace MediLink_BackEnd.Controllers
             catch (Exception ex)
             {
                 Console.Write(ex.ToString());
-                return StatusCode(500, ex.ToString());
+                return StatusCode(500, "\"An internal server error occurred.\"");
             }
         }
     }

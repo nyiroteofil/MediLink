@@ -1,4 +1,4 @@
-﻿namespace MediLine_FrontEnd.Models
+﻿namespace MediLine_FrontEnd.Data
 {
     public enum RequestStatus
     {

@@ -38,7 +38,7 @@ namespace MediLink_BackEnd.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return StatusCode(500, ex.ToString());
+                return StatusCode(500, "\"An internal server error occurred.\"");
             }
         }
 
@@ -53,7 +53,7 @@ namespace MediLink_BackEnd.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return StatusCode(500, ex.ToString());
+                return StatusCode(500, "\"An internal server error occurred.\"");
             }
         }
 
@@ -68,7 +68,7 @@ namespace MediLink_BackEnd.Controllers
             catch (Exception ex)
             {
                 Console.WriteLine(ex.ToString());
-                return StatusCode(500, ex.ToString());
+                return StatusCode(500, "\"An internal server error occurred.\"");
             }
         }
 
@@ -84,7 +84,7 @@ namespace MediLink_BackEnd.Controllers
             }
             catch (Exception ex) 
             { 
-                return StatusCode(500, ex.ToString());
+                return StatusCode(500, "\"An internal server error occurred.\"");
             }
         }
 
