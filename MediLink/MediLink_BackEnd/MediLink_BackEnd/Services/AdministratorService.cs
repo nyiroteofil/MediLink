@@ -31,6 +31,8 @@ namespace MediLink_BackEnd.Services
         {
             try
             {
+                // Fetching admins from database with their respective ContactInfo field
+                // and DataSheet
                 List<Administrator> admins = await _dbContext.Administrators
                     .Include(a => a.ContactInfo)
                     .Include(a => a.DataSheet)
@@ -59,6 +61,7 @@ namespace MediLink_BackEnd.Services
             }
         }
 
+        // Pretty self explenatory
         public async Task<List<UserSummaryDTO>> GetAllActiveAssistants()
         {
             try
