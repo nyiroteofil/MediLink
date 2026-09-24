@@ -9,10 +9,11 @@
       "MediLink_BackEnd/1.0.0": {
         "dependencies": {
           "Microsoft.AspNetCore.Authentication.JwtBearer": "9.0.14",
+          "Microsoft.AspNetCore.Cryptography.KeyDerivation": "9.0.20",
           "Microsoft.AspNetCore.OpenApi": "9.0.9",
           "Microsoft.EntityFrameworkCore": "9.0.13",
+          "Microsoft.EntityFrameworkCore.Design": "9.0.13",
           "Microsoft.EntityFrameworkCore.SqlServer": "9.0.13",
-          "Microsoft.EntityFrameworkCore.Tools": "9.0.13",
           "Swashbuckle.AspNetCore": "9.0.6",
           "System.IdentityModel.Tokens.Jwt": "8.17.0"
         },
@@ -63,6 +64,25 @@
           "lib/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.dll": {
             "assemblyVersion": "9.0.14.0",
             "fileVersion": "9.0.1426.11909"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Cryptography.Internal/9.0.20": {
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.Cryptography.Internal.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.2026.41407"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Cryptography.KeyDerivation/9.0.20": {
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.Internal": "9.0.20"
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {
+            "assemblyVersion": "9.0.0.0",
+            "fileVersion": "9.0.2026.41407"
           }
         }
       },
@@ -398,22 +418,22 @@
           "runtimes/win-arm/native/Microsoft.Data.SqlClient.SNI.dll": {
             "rid": "win-arm",
             "assetType": "native",
-            "fileVersion": "5.1.1.0"
+            "fileVersion": "0.0.0.0"
           },
           "runtimes/win-arm64/native/Microsoft.Data.SqlClient.SNI.dll": {
             "rid": "win-arm64",
             "assetType": "native",
-            "fileVersion": "5.1.1.0"
+            "fileVersion": "0.0.0.0"
           },
           "runtimes/win-x64/native/Microsoft.Data.SqlClient.SNI.dll": {
             "rid": "win-x64",
             "assetType": "native",
-            "fileVersion": "5.1.1.0"
+            "fileVersion": "0.0.0.0"
           },
           "runtimes/win-x86/native/Microsoft.Data.SqlClient.SNI.dll": {
             "rid": "win-x86",
             "assetType": "native",
-            "fileVersion": "5.1.1.0"
+            "fileVersion": "0.0.0.0"
           }
         }
       },
@@ -486,11 +506,6 @@
             "assemblyVersion": "9.0.13.0",
             "fileVersion": "9.0.1326.6317"
           }
-        }
-      },
-      "Microsoft.EntityFrameworkCore.Tools/9.0.13": {
-        "dependencies": {
-          "Microsoft.EntityFrameworkCore.Design": "9.0.13"
         }
       },
       "Microsoft.Extensions.Caching.Abstractions/9.0.13": {
@@ -1006,6 +1021,20 @@
       "path": "microsoft.aspnetcore.authentication.jwtbearer/9.0.14",
       "hashPath": "microsoft.aspnetcore.authentication.jwtbearer.9.0.14.nupkg.sha512"
     },
+    "Microsoft.AspNetCore.Cryptography.Internal/9.0.20": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-XSnsyfkS1U3GMrGHmJvtrj1VN8ZDG4TqP0GVjQGj1Yg9wgsJdO2smNotaOZfYx6CeyF3JPDXz+xOr3/4rEtbWA==",
+      "path": "microsoft.aspnetcore.cryptography.internal/9.0.20",
+      "hashPath": "microsoft.aspnetcore.cryptography.internal.9.0.20.nupkg.sha512"
+    },
+    "Microsoft.AspNetCore.Cryptography.KeyDerivation/9.0.20": {
+      "type": "package",
+      "serviceable": true,
+      "sha512": "sha512-h3KbzpWLrW7VO+m3q57PlJfrtJCqViSIYaICpbEuDSMrjqbHkeHq2gTkkS86vFrnmE0caov6jiCOXY2z3I0bjw==",
+      "path": "microsoft.aspnetcore.cryptography.keyderivation/9.0.20",
+      "hashPath": "microsoft.aspnetcore.cryptography.keyderivation.9.0.20.nupkg.sha512"
+    },
     "Microsoft.AspNetCore.OpenApi/9.0.9": {
       "type": "package",
       "serviceable": true,
@@ -1110,13 +1139,6 @@
       "sha512": "sha512-fdAbmyxXrNVoG2a6q2jyw0wbv3WIMyjvEfV9D1q04+9FR8dSwhR1OQtBuMFidYtHCXfLSw2Ok4VMXC6eAW5qTg==",
       "path": "microsoft.entityframeworkcore.sqlserver/9.0.13",
       "hashPath": "microsoft.entityframeworkcore.sqlserver.9.0.13.nupkg.sha512"
-    },
-    "Microsoft.EntityFrameworkCore.Tools/9.0.13": {
-      "type": "package",
-      "serviceable": true,
-      "sha512": "sha512-s1PmQTpeOX1gfCqyO3WGKiLltyUQMGQr+vXekNSnXjZn2xIrkMOQkYiATWeMo7Jk/LKTJ/LNZyOLjnow3U2+ZQ==",
-      "path": "microsoft.entityframeworkcore.tools/9.0.13",
-      "hashPath": "microsoft.entityframeworkcore.tools.9.0.13.nupkg.sha512"
     },
     "Microsoft.Extensions.Caching.Abstractions/9.0.13": {
       "type": "package",

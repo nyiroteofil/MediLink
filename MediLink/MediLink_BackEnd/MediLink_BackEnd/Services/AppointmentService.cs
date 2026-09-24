@@ -8,8 +8,8 @@ namespace MediLink_BackEnd.Services
     public interface IAppointmentService
     {
         public Task<AppointmentRequest> RequestAppointment(AppointmentRequestDTO dto);
-        public Task<List<AppointmentRequestResponseDTO>> GetPatientsAppointment(int ID);
-        public Task<List<AppointmentRequestResponseDTO>> GetDoctorsAppointment(int ID);
+        public Task<List<AppointmentRequestResponseDTO>> GetPatientsAppointment(int id);
+        public Task<List<AppointmentRequestResponseDTO>> GetDoctorsAppointment(int id);
         public Task<List<AppointmentRequestResponseDTO>> GetPendingAppointmentRequests(int userID);
     }
 
@@ -99,7 +99,7 @@ namespace MediLink_BackEnd.Services
             }
         }
 
-        public async Task<List<AppointmentRequestResponseDTO>> GetPatientsAppointment(int ID)
+        public async Task<List<AppointmentRequestResponseDTO>> GetPatientsAppointment(int id)
         {
             List<AppointmentRequest> requests;
 
@@ -110,7 +110,7 @@ namespace MediLink_BackEnd.Services
                         .ThenInclude(p => p.DataSheet)
                     .Include(r => r.SpecialistDoctor)
                         .ThenInclude(d => d.DataSheet)
-                    .Where(r => r.PatientID == ID)
+                    .Where(r => r.PatientID == id)
                     .ToListAsync();
             }
             catch (Exception ex)
@@ -141,7 +141,7 @@ namespace MediLink_BackEnd.Services
             return requestResponseDTOs;
         }
 
-        public async Task<List<AppointmentRequestResponseDTO>> GetDoctorsAppointment(int ID)
+        public async Task<List<AppointmentRequestResponseDTO>> GetDoctorsAppointment(int id)
         {
             List<AppointmentRequest> requests;
 
@@ -152,7 +152,7 @@ namespace MediLink_BackEnd.Services
                         .ThenInclude(p => p.DataSheet)
                     .Include(r => r.SpecialistDoctor)
                         .ThenInclude(d => d.DataSheet)
-                    .Where(r => r.SpecialistDoctorID == ID)
+                    .Where(r => r.SpecialistDoctorID == id)
                     .ToListAsync();
             }
             catch (Exception ex)

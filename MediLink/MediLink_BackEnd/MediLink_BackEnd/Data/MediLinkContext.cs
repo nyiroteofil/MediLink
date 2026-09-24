@@ -10,7 +10,7 @@ namespace MediLink_BackEnd.Data
 
         public DbSet<Medication> Medications { get; set; }
         public DbSet<Institution> Institutions { get; set; }
-        public DbSet<User> Users { get; set; } // Adding the apstract class, as we can use the .UseTtpMappingStrategy() So we don't have to do it by hand for each sub-class
+        public DbSet<User> Users { get; set; } // Adding the abstract class, as we can use the .UseTtpMappingStrategy() So we don't have to do it by hand for each sub-class
         public DbSet<Patient> Patients { get; set; }
         public DbSet<SpecialistDoctor> SpecialistDoctors { get; set; }
         public DbSet<MedicalAsisstant> MedicalAsisstants { get; set; }

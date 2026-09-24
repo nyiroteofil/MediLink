@@ -79,6 +79,35 @@
           "Microsoft.AspNetCore.App"
         ]
       },
+      "Microsoft.AspNetCore.Cryptography.Internal/9.0.20": {
+        "type": "package",
+        "compile": {
+          "lib/net9.0/Microsoft.AspNetCore.Cryptography.Internal.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.Cryptography.Internal.dll": {
+            "related": ".xml"
+          }
+        }
+      },
+      "Microsoft.AspNetCore.Cryptography.KeyDerivation/9.0.20": {
+        "type": "package",
+        "dependencies": {
+          "Microsoft.AspNetCore.Cryptography.Internal": "9.0.20"
+        },
+        "compile": {
+          "lib/net9.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {
+            "related": ".xml"
+          }
+        },
+        "runtime": {
+          "lib/net9.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll": {
+            "related": ".xml"
+          }
+        }
+      },
       "Microsoft.AspNetCore.OpenApi/9.0.9": {
         "type": "package",
         "dependencies": {
@@ -1743,6 +1772,44 @@
         "lib/net9.0/Microsoft.AspNetCore.Authentication.JwtBearer.xml",
         "microsoft.aspnetcore.authentication.jwtbearer.9.0.14.nupkg.sha512",
         "microsoft.aspnetcore.authentication.jwtbearer.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Cryptography.Internal/9.0.20": {
+      "sha512": "XSnsyfkS1U3GMrGHmJvtrj1VN8ZDG4TqP0GVjQGj1Yg9wgsJdO2smNotaOZfYx6CeyF3JPDXz+xOr3/4rEtbWA==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.cryptography.internal/9.0.20",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net462/Microsoft.AspNetCore.Cryptography.Internal.dll",
+        "lib/net462/Microsoft.AspNetCore.Cryptography.Internal.xml",
+        "lib/net9.0/Microsoft.AspNetCore.Cryptography.Internal.dll",
+        "lib/net9.0/Microsoft.AspNetCore.Cryptography.Internal.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.Internal.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.Internal.xml",
+        "microsoft.aspnetcore.cryptography.internal.9.0.20.nupkg.sha512",
+        "microsoft.aspnetcore.cryptography.internal.nuspec"
+      ]
+    },
+    "Microsoft.AspNetCore.Cryptography.KeyDerivation/9.0.20": {
+      "sha512": "h3KbzpWLrW7VO+m3q57PlJfrtJCqViSIYaICpbEuDSMrjqbHkeHq2gTkkS86vFrnmE0caov6jiCOXY2z3I0bjw==",
+      "type": "package",
+      "path": "microsoft.aspnetcore.cryptography.keyderivation/9.0.20",
+      "files": [
+        ".nupkg.metadata",
+        ".signature.p7s",
+        "Icon.png",
+        "THIRD-PARTY-NOTICES.TXT",
+        "lib/net462/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll",
+        "lib/net462/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
+        "lib/net9.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll",
+        "lib/net9.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.dll",
+        "lib/netstandard2.0/Microsoft.AspNetCore.Cryptography.KeyDerivation.xml",
+        "microsoft.aspnetcore.cryptography.keyderivation.9.0.20.nupkg.sha512",
+        "microsoft.aspnetcore.cryptography.keyderivation.nuspec"
       ]
     },
     "Microsoft.AspNetCore.OpenApi/9.0.9": {
@@ -4906,8 +4973,10 @@
   "projectFileDependencyGroups": {
     "net9.0": [
       "Microsoft.AspNetCore.Authentication.JwtBearer >= 9.0.14",
+      "Microsoft.AspNetCore.Cryptography.KeyDerivation >= 9.0.20",
       "Microsoft.AspNetCore.OpenApi >= 9.0.9",
       "Microsoft.EntityFrameworkCore >= 9.0.13",
+      "Microsoft.EntityFrameworkCore.Design >= 9.0.13",
       "Microsoft.EntityFrameworkCore.SqlServer >= 9.0.13",
       "Microsoft.EntityFrameworkCore.Tools >= 9.0.13",
       "Swashbuckle.AspNetCore >= 9.0.6",
@@ -4915,32 +4984,24 @@
     ]
   },
   "packageFolders": {
-    "C:\\Users\\portr\\.nuget\\packages\\": {},
-    "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages": {}
+    "/home/teofil/.nuget/packages/": {}
   },
   "project": {
     "version": "1.0.0",
     "restore": {
-      "projectUniqueName": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\MediLink_BackEnd.csproj",
+      "projectUniqueName": "/home/teofil/Repos/MediLink/MediLink/MediLink_BackEnd/MediLink_BackEnd/MediLink_BackEnd.csproj",
       "projectName": "MediLink_BackEnd",
-      "projectPath": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\MediLink_BackEnd.csproj",
-      "packagesPath": "C:\\Users\\portr\\.nuget\\packages\\",
-      "outputPath": "D:\\Szakdoogozat_BSc\\MediLink\\MediLink_BackEnd\\MediLink_BackEnd\\obj\\",
+      "projectPath": "/home/teofil/Repos/MediLink/MediLink/MediLink_BackEnd/MediLink_BackEnd/MediLink_BackEnd.csproj",
+      "packagesPath": "/home/teofil/.nuget/packages/",
+      "outputPath": "/home/teofil/Repos/MediLink/MediLink/MediLink_BackEnd/MediLink_BackEnd/obj/",
       "projectStyle": "PackageReference",
-      "fallbackFolders": [
-        "C:\\Program Files (x86)\\Microsoft Visual Studio\\Shared\\NuGetPackages"
-      ],
       "configFilePaths": [
-        "C:\\Users\\portr\\AppData\\Roaming\\NuGet\\NuGet.Config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.FallbackLocation.config",
-        "C:\\Program Files (x86)\\NuGet\\Config\\Microsoft.VisualStudio.Offline.config"
+        "/home/teofil/.nuget/NuGet/NuGet.Config"
       ],
       "originalTargetFrameworks": [
         "net9.0"
       ],
       "sources": {
-        "C:\\Program Files (x86)\\Microsoft SDKs\\NuGetPackages\\": {},
-        "C:\\Program Files\\dotnet\\library-packs": {},
         "https://api.nuget.org/v3/index.json": {}
       },
       "frameworks": {
@@ -4960,7 +5021,7 @@
         "auditLevel": "low",
         "auditMode": "direct"
       },
-      "SdkAnalysisLevel": "10.0.300"
+      "SdkAnalysisLevel": "10.0.400"
     },
     "frameworks": {
       "net9.0": {
@@ -4971,11 +5032,21 @@
             "target": "Package",
             "version": "[9.0.14, )"
           },
+          "Microsoft.AspNetCore.Cryptography.KeyDerivation": {
+            "target": "Package",
+            "version": "[9.0.20, )"
+          },
           "Microsoft.AspNetCore.OpenApi": {
             "target": "Package",
             "version": "[9.0.9, )"
           },
           "Microsoft.EntityFrameworkCore": {
+            "target": "Package",
+            "version": "[9.0.13, )"
+          },
+          "Microsoft.EntityFrameworkCore.Design": {
+            "include": "Runtime, Build, Native, ContentFiles, Analyzers, BuildTransitive",
+            "suppressParent": "All",
             "target": "Package",
             "version": "[9.0.13, )"
           },
@@ -5017,7 +5088,7 @@
             "privateAssets": "all"
           }
         },
-        "runtimeIdentifierGraphPath": "C:\\Program Files\\dotnet\\sdk\\10.0.302/PortableRuntimeIdentifierGraph.json"
+        "runtimeIdentifierGraphPath": "/home/teofil/.dotnet/sdk/10.0.400/PortableRuntimeIdentifierGraph.json"
       }
     }
   }
