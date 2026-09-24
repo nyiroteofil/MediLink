@@ -13,12 +13,12 @@ namespace MediLink_BackEnd.Controllers
     {
 
         private readonly MediLinkContext _context;
-        private readonly IInstiutionService _instiutionService;
+        private readonly IInstitutionService _institutionService;
 
-        public InstitutionsController(MediLinkContext context, IInstiutionService service)
+        public InstitutionsController(MediLinkContext context, IInstitutionService service)
         {
             _context = context;
-            _instiutionService = service;
+            _institutionService = service;
         }
 
         [HttpPost]
@@ -26,7 +26,7 @@ namespace MediLink_BackEnd.Controllers
         {
             try
             {
-                await _instiutionService.AddInstiution(institution);
+                await _institutionService.AddInstiution(institution);
                 return Ok(institution);
             }
             catch (Exception ex)

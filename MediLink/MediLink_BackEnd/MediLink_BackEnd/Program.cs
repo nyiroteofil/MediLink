@@ -80,10 +80,10 @@ namespace MediLink_BackEnd
             // adding own service classes
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IAppointmentService, AppointmentService>();
-            builder.Services.AddScoped<IInstiutionService, InstitutionService>();
+            builder.Services.AddScoped<IInstitutionService, InstitutionService>();
             builder.Services.AddScoped<IInfoService, InfoService>();
             builder.Services.AddScoped<IAdministratorService, AdministratorService>();
-            builder.Services.AddScoped<IMessgageService, MessageService>();
+            builder.Services.AddScoped<IMessageService, MessageService>();
 
             var app = builder.Build();
 

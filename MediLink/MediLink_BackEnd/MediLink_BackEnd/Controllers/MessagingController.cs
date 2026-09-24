@@ -9,9 +9,9 @@ using Microsoft.AspNetCore.Mvc;
 [ApiController]
 public class MessageController : ControllerBase
 {
-    private readonly IMessgageService _messageService;
+    private readonly IMessageService _messageService;
 
-    public MessageController(IMessgageService messageService)
+    public MessageController(IMessageService messageService)
     {
         _messageService = messageService;
     }

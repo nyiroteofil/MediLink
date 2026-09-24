@@ -3,11 +3,11 @@ using MediLink_BackEnd.Models;
 
 namespace MediLink_BackEnd.Services
 {
-    public interface IInstiutionService
+    public interface IInstitutionService
     {
         public Task<Institution> AddInstiution(Institution institution);
     }
-    public class InstitutionService : IInstiutionService
+    public class InstitutionService : IInstitutionService
     {
         private readonly MediLinkContext _dbContext;
 

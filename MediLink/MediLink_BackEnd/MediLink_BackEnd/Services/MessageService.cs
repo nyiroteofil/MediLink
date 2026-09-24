@@ -5,7 +5,7 @@ using Microsoft.EntityFrameworkCore;
 namespace MediLink_BackEnd.Services
 {
 
-    public interface IMessgageService
+    public interface IMessageService
     {
         public Task<Message> PostMessage(Message message);
         public Task<List<Message>> GetMessagesFromChat(int chatID);
@@ -13,7 +13,7 @@ namespace MediLink_BackEnd.Services
         public Task<List<Chat>> GetUserChats(int userID);
     }
 
-    public class MessageService : IMessgageService
+    public class MessageService : IMessageService
     {
         private readonly MediLinkContext _dbContext;
 
