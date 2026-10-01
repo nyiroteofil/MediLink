@@ -97,6 +97,11 @@ namespace MediLink_BackEnd.Data
             mb.Entity<MedicalAsisstant>()
                 .HasMany(ma => ma.AttendingDoctors)
                 .WithMany(sd => sd.MedicalAsisstants);
+            
+            mb.Entity<MedicalStaffDataSheet>()
+                .HasOne(ds => ds.Institution)
+                .WithMany()
+                .OnDelete(DeleteBehavior.SetNull);
 
             mb.Entity<Medication>()
                 .HasMany(m => m.Ingredients)

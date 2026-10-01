@@ -31,7 +31,13 @@ namespace MediLink_BackEnd.Data.DTOs
         public string? Address { get; set; }
         public string? EmployeeID { get; set; }
         public string? Position { get; set; }
-        public int InstitutionID { get; set; }
+        /*
+         institution can be null in cases when the app is started for the first time
+         and there are no administrators. This necessitates a default admin that can
+         create users and set up the system. At that time there is no Institution
+         records in the DB, thus it would run into an error.
+        */
+        public int? InstitutionID { get; set; } 
         public string Email { get; set; }
         public string PhoneNumber { get; set; }
     }

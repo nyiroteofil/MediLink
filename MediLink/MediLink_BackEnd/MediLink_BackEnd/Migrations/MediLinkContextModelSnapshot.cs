@@ -508,7 +508,7 @@ namespace MediLink_BackEnd.Migrations
                         .IsRequired()
                         .HasColumnType("nvarchar(max)");
 
-                    b.Property<int>("InstitutionID")
+                    b.Property<int?>("InstitutionID")
                         .HasColumnType("int");
 
                     b.Property<string>("Position")
@@ -839,8 +839,7 @@ namespace MediLink_BackEnd.Migrations
                     b.HasOne("MediLink_BackEnd.Models.Institution", "Institution")
                         .WithMany()
                         .HasForeignKey("InstitutionID")
-                        .OnDelete(DeleteBehavior.Cascade)
-                        .IsRequired();
+                        .OnDelete(DeleteBehavior.SetNull);
 
                     b.Navigation("Institution");
                 });
