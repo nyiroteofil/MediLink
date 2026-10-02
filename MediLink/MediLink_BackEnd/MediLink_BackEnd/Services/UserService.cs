@@ -1,4 +1,5 @@
-﻿using MediLink_BackEnd.Data;
+﻿using MediLink_BackEnd.Data; 
+using MediLink_BackEnd.UtilityClasses;
 using MediLink_BackEnd.Data.DTOs;
 using MediLink_BackEnd.Models;
 using Microsoft.EntityFrameworkCore;
@@ -35,7 +36,7 @@ namespace MediLink_BackEnd.Services
             Administrator admin = new Administrator
             {
                 Username = dto.Username,
-                PasswordHash = PwdEncryptionHelper.GetHashedPassword(dto.PasswordHash, out string salt),
+                Password = PwdEncryptionHelper.GetHashedPassword(dto.PasswordHash, out string salt),
                 PasswordSalt = salt,
                 Status = UserStatus.Active,
                 Role = UserRole.Administrator,
@@ -80,7 +81,7 @@ namespace MediLink_BackEnd.Services
             var patient = new Patient
             {
                 Username = dto.Username,
-                PasswordHash = passwordHash,
+                Password = passwordHash,
                 PasswordSalt = salt,
                 Status = UserStatus.Active,
                 Role = UserRole.Patient,
@@ -124,7 +125,7 @@ namespace MediLink_BackEnd.Services
             var specialistDoctor = new SpecialistDoctor
             {
                 Username = dto.Username,
-                PasswordHash = passwordHash,
+                Password = passwordHash,
                 PasswordSalt= salt,
                 Status = UserStatus.Active,
                 Role = UserRole.SpecialistDoctor,
@@ -214,7 +215,7 @@ namespace MediLink_BackEnd.Services
             var user = await _dbContext.Users
                 .FirstOrDefaultAsync(u => u.Username == dto.Username);
 
-            if (user == null || !PwdEncryptionHelper.VerifyPassword(dto.Password, user.PasswordHash, user.PasswordSalt)) return null;
+            if (user == null || !PwdEncryptionHelper.VerifyPassword(dto.Password, user.Password, user.PasswordSalt)) return null;
 
 
             // Check if user's account is not suspended or inactive

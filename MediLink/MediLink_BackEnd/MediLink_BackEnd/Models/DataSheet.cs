@@ -20,6 +20,6 @@
         public string EmployeeID { get; set; }
         public string Position { get; set; }
         public int? InstitutionID { get; set; }
-        public Institution Institution { get; set; }
+        public Institution? Institution { get; set; }
     }
 }

@@ -7,16 +7,15 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Text.Json.Serialization;
+using MediLink_BackEnd.Data;
 
 namespace MediLink_BackEnd
 {
     public class Program
     {
-        public static void Main(string[] args)
+        public async static Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
-
-            builder.Services.AddControllers();
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 
@@ -84,8 +83,24 @@ namespace MediLink_BackEnd
             builder.Services.AddScoped<IInfoService, InfoService>();
             builder.Services.AddScoped<IAdministratorService, AdministratorService>();
             builder.Services.AddScoped<IMessageService, MessageService>();
+            builder.Services.AddTransient<IDbSeederService, DbSeederService>();
 
             var app = builder.Build();
+
+            using (IServiceScope scope = app.Services.CreateScope())
+            {
+                IDbSeederService services = scope.ServiceProvider.GetRequiredService<IDbSeederService>();
+
+                try
+                {
+                    await services.SeedDefaultAdmin();
+                }
+                catch (Exception ex)
+                {
+                    Console.WriteLine("Application will shut down. Please correct the issue and restart!");
+                    throw;
+                }
+            }
 
             // Configure the HTTP request pipeline.
             if (app.Environment.IsDevelopment())
@@ -102,14 +117,12 @@ namespace MediLink_BackEnd
             // Enableing user token authentication and authorization
             app.UseAuthentication();
             app.UseAuthorization();
-
             app.UseHttpsRedirection();
-
-            app.UseAuthorization();
 
             app.MapControllers();
 
             app.Run();
         }
     }
+
 }

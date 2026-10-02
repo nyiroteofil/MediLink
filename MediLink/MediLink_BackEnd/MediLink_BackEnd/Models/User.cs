@@ -29,8 +29,8 @@
     {
         public int ID { get; set; }
         public string Username { get; set; }
-        public string PasswordHash { get; set; } // The hashed password cannot be reversed, so it is safe to store it's bytes in plain text
-        public string PasswordSalt {  get; set; } // The salt is not reversable so it's save to store it this way
+        public string Password { get; set; } // The hashed password cannot be reversed, so it is safe to store it's bytes in plain text
+        public string PasswordSalt {  get; set; } // The salt is not reversable so it's safe to store it this way
         public UserRole Role { get; set; }
         public UserStatus Status { get; set; }
         public int ContactInfoID { get; set; }

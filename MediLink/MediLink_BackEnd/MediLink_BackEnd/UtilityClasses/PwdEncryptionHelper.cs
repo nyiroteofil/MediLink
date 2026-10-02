@@ -1,7 +1,7 @@
 ﻿using Microsoft.AspNetCore.Cryptography.KeyDerivation;
 using System.Security.Cryptography;
 
-namespace MediLink_BackEnd.Data
+namespace MediLink_BackEnd.UtilityClasses
 {
     public class PwdEncryptionHelper
     {
