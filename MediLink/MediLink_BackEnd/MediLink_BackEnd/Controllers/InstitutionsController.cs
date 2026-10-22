@@ -35,5 +35,10 @@ namespace MediLink_BackEnd.Controllers
                 return StatusCode(500, "\"An internal server error occurred.\"");
             }
         }
+        
+        // First of all, this controller needs to be finished with at least
+        // the basic CRUD functions. Second of all, what is the only user that
+        // should be able to manage registered institutions? It is obviously the administrator
+        // thus the few controllers written here could be put into the AdministratorController.cs class
     }
 }

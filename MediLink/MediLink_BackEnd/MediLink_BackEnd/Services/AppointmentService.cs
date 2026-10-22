@@ -5,13 +5,6 @@ using Microsoft.EntityFrameworkCore;
 
 namespace MediLink_BackEnd.Services
 {
-    public interface IAppointmentService
-    {
-        public Task<AppointmentRequest> RequestAppointment(AppointmentRequestDTO dto);
-        public Task<List<AppointmentRequestResponseDTO>> GetPatientsAppointment(int id);
-        public Task<List<AppointmentRequestResponseDTO>> GetDoctorsAppointment(int id);
-        public Task<List<AppointmentRequestResponseDTO>> GetPendingAppointmentRequests(int userID);
-    }
 
     public class AppointmentService : IAppointmentService
     {

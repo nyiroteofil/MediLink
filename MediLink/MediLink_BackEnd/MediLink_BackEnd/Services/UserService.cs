@@ -10,25 +10,17 @@ using System.Text;
 
 namespace MediLink_BackEnd.Services
 {
-    public interface IUserService
-    {
-        Task<Patient> CreatePatientUser(PatientDTO dto);
-        Task<SpecialistDoctor> CreateDoctorUser(StaffUserDTO dto);
-        Task<string> UserLogIn(LoginDTO dto);
-        Task<Administrator> CreateAdministrator(StaffUserDTO dto);
-        Task<bool> ActivateUser(int userID);
-        Task<bool> SuspendUser(int userID);
-    }
-
     public class UserService : IUserService
     {
         private readonly MediLinkContext _dbContext;
         private readonly IConfiguration _config;
+        private readonly ILogger<UserService> _logger;
 
-        public UserService(MediLinkContext context, IConfiguration config)
+        public UserService(MediLinkContext context, IConfiguration config, ILogger<UserService> logger)
         {
             _dbContext = context;
             _config = config;
+            _logger = logger;
         }
 
         public async Task<Administrator> CreateAdministrator(StaffUserDTO dto)
@@ -72,7 +64,7 @@ namespace MediLink_BackEnd.Services
             }
         }
 
-        async public Task<Patient> CreatePatientUser(PatientDTO dto)
+        public async Task<Patient> CreatePatientUser(PatientDTO dto)
         {
 
             string passwordHash = PwdEncryptionHelper.GetHashedPassword(dto.PasswordHash, out string salt);
@@ -116,7 +108,7 @@ namespace MediLink_BackEnd.Services
 
         }
 
-        async public Task<SpecialistDoctor> CreateDoctorUser(StaffUserDTO dto)
+        public async Task<SpecialistDoctor> CreateDoctorUser(StaffUserDTO dto)
         {
             // getting the securely hashed password
             string passwordHash = PwdEncryptionHelper.GetHashedPassword(dto.PasswordHash, out string salt);
@@ -161,51 +153,146 @@ namespace MediLink_BackEnd.Services
             }
         }
 
-        public async Task<bool> ActivateUser(int userID)
+        public async Task<MedicalAssistant> CreateMedicalAssistantUser(StaffUserDTO dto, List<SpecialistDoctor> attendingDoctors)
         {
-            User user;
+            // getting the securely hashed password
+            string passwordHash = PwdEncryptionHelper.GetHashedPassword(dto.PasswordHash, out string salt);
+
+            // transferring data from DTO
+            MedicalAssistant assistantUser = new MedicalAssistant()
+            {
+                Username = dto.Username,
+                Password = passwordHash,
+                PasswordSalt= salt,
+                Status = UserStatus.Active,
+                Role = UserRole.MedicalAssistant,
+                ContactInfo = new ContactInfo
+                {
+                    PhoneNumber = dto.PhoneNumber,
+                    Email = dto.Email
+                },
+                DataSheet = new MedicalStaffDataSheet
+                {
+                    FirstName = dto.FirstName,
+                    LastName = dto.LastName,
+                    EmployeeID = dto.EmployeeID,
+                    Position = dto.Position,
+                    InstitutionID = dto.InstitutionID,
+                    DateOfBirth = dto.DateOfBirth,
+                    Sex = dto.Sex,
+                    Address = dto.Address
+                },
+                AttendingDoctors = attendingDoctors
+            };
 
             try
             {
-                user = await _dbContext.Users.Where(u => u.ID == userID).FirstOrDefaultAsync();
+                await _dbContext.MedicalAsisstants.AddAsync(assistantUser);
+                await _dbContext.SaveChangesAsync();
             }
             catch (Exception ex)
             {
-                Console.Write(ex.ToString());
+                _logger.LogError(ex, "Exception while trying to save Medical Assistant", assistantUser);
                 throw;
             }
 
-            if (user != null)
+            return assistantUser;
+        }
+        
+        public async Task<List<UserSummaryDTO>> GetAllActiveAssistants()
+        {
+            try
             {
-                user.Status = UserStatus.Active;
-                await _dbContext.SaveChangesAsync();
-                return true;
+                List<MedicalAssistant> asistants = await _dbContext.MedicalAsisstants
+                    .Include(a => a.ContactInfo)
+                    .Include(a => a.DataSheet)
+                    .Where(a => a.Status == UserStatus.Active)
+                    .ToListAsync(); ;
+                List<UserSummaryDTO> DTOs = new List<UserSummaryDTO>();
+
+                foreach (MedicalAssistant asistant in asistants)
+                {
+                    DTOs.Add(new UserSummaryDTO
+                    {
+                        ID = asistant.ID,
+                        Username = asistant.Username,
+                        FullName = $"{asistant.DataSheet.FirstName} {asistant.DataSheet.LastName}",
+                        Role = asistant.Role,
+                        Status = asistant.Status,
+                    });
+                }
+
+                return DTOs;
             }
-            else return false;
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return new List<UserSummaryDTO>();
+            }
         }
 
-
-        public async Task<bool> SuspendUser(int userID)
+        public async Task<List<UserSummaryDTO>> GetAllActiveDoctors()
         {
-            User user;
-
             try
             {
-                user = await _dbContext.Users.Where(u => u.ID == userID).FirstOrDefaultAsync();
+                List<SpecialistDoctor> doctors = await _dbContext.SpecialistDoctors
+                    .Include(a => a.ContactInfo)
+                    .Include(a => a.DataSheet)
+                    .Where(a => a.Status == UserStatus.Active)
+                    .ToListAsync(); ;
+                List<UserSummaryDTO> DTOs = new List<UserSummaryDTO>();
+
+                foreach (SpecialistDoctor doctor in doctors)
+                {
+                    DTOs.Add(new UserSummaryDTO
+                    {
+                        ID = doctor.ID,
+                        Username = doctor.Username,
+                        FullName = $"{doctor.DataSheet.FirstName} {doctor.DataSheet.LastName}",
+                        Role = doctor.Role,
+                        Status = doctor.Status,
+                    });
+                }
+
+                return DTOs;
             }
             catch (Exception ex)
             {
-                Console.Write(ex.ToString());
-                throw;
+                Console.WriteLine(ex.ToString());
+                return new List<UserSummaryDTO>();
             }
+        }
 
-            if (user != null)
+        public async Task<List<UserSummaryDTO>> GetAllActivePatients()
+        {
+            try
             {
-                user.Status = UserStatus.Suspended;
-                await _dbContext.SaveChangesAsync();
-                return true;
+                List<Patient> patients = await _dbContext.Patients
+                    .Include(a => a.ContactInfo)
+                    .Include(a => a.DataSheet)
+                    .Where(a => a.Status == UserStatus.Active)
+                    .ToListAsync(); ;
+                List<UserSummaryDTO> DTOs = new List<UserSummaryDTO>();
+
+                foreach (Patient patient in patients)
+                {
+                    DTOs.Add(new UserSummaryDTO
+                    {
+                        ID = patient.ID,
+                        Username = patient.Username,
+                        FullName = $"{patient.DataSheet.FirstName} {patient.DataSheet.LastName}",
+                        Role = patient.Role,
+                        Status = patient.Status,
+                    });
+                }
+
+                return DTOs;
             }
-            else return false;
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                return new List<UserSummaryDTO>();
+            }
         }
 
         async public Task<string> UserLogIn(LoginDTO dto)
@@ -256,6 +343,67 @@ namespace MediLink_BackEnd.Services
             );
 
             return new JwtSecurityTokenHandler().WriteToken(token);
+        }
+        
+        // Methods for providing info to users and front-end
+        
+        
+        // gets the number of appointmetns a doctor has in the next 7 days
+        public async Task<int> GetDocAppointmentsWeekAhead(int docID)
+        {
+            try
+            {
+                return await _dbContext.Appointments
+                    .Where(a => a.SpecialistDoctorID == docID &&
+                                a.StartTime >= DateTime.Now &&
+                                a.StartTime <= DateTime.Now.AddDays(7))
+                    .CountAsync();
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+        }
+
+        public async Task<DateTime?> GetNextAppointmentDate(int userID)
+        {
+            try
+            {
+                Appointment nextAppointment = await _dbContext.Appointments
+                    .Where(a => (a.PatientID == userID || a.SpecialistDoctorID == userID) && a.StartTime >= DateTime.Now)
+                    .OrderBy(a => a.StartTime)
+                    .FirstOrDefaultAsync();
+
+                return nextAppointment?.StartTime;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
+        }
+
+        public async Task<int> DocActivePatientNumber(int docID)
+        {
+            try
+            {
+                int numOfActivePatients = await _dbContext.Patients
+                    .Include(p => p.SpecialistDoctors)
+                    .Include(p => p.Dignoses)
+                    .CountAsync(p =>
+                        p.SpecialistDoctors.Any(sp => sp.ID == docID) &&
+                        p.Dignoses.Any(d =>
+                            d.Status == DiagnosisStatus.Active ||
+                            d.Status == DiagnosisStatus.Remission));
+
+                return numOfActivePatients;
+            }
+            catch (Exception ex)
+            {
+                Console.WriteLine(ex.ToString());
+                throw;
+            }
         }
     }
 }

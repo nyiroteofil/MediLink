@@ -13,14 +13,14 @@ namespace MediLink_BackEnd.Data
         public DbSet<User> Users { get; set; } // Adding the abstract class, as we can use the .UseTtpMappingStrategy() So we don't have to do it by hand for each sub-class
         public DbSet<Patient> Patients { get; set; }
         public DbSet<SpecialistDoctor> SpecialistDoctors { get; set; }
-        public DbSet<MedicalAsisstant> MedicalAsisstants { get; set; }
+        public DbSet<MedicalAssistant> MedicalAsisstants { get; set; }
         public DbSet<Administrator> Administrators { get; set; }
         public DbSet<DataSheet> DataSheets {  get; set; }
         public DbSet<PatientDataSheet> PatientDataSheets { get; set; }
         public DbSet<MedicalStaffDataSheet> MedicalStaffDataSheets { get; set; }
         public DbSet<Diagnosis> Diagnoses { get; set; }
         public DbSet<Symptom> Symptoms { get; set; }
-        public DbSet<Referal> Referals { get; set; }
+        public DbSet<Referral> Referals { get; set; }
         public DbSet<MedicationReminder> MedicationReminders { get; set; }
         public DbSet<Event> Events { get; set; } // Same reason as with "User" class
         public DbSet<Appointment> Appointments { get; set; }
@@ -40,14 +40,14 @@ namespace MediLink_BackEnd.Data
             mb.Entity<DataSheet>().UseTptMappingStrategy();
 
             // Resolving cascade cycles and references to sub-class
-            mb.Entity<Referal>()
+            mb.Entity<Referral>()
                 .HasOne(r => r.Patient)
                 .WithMany(p => p.Referals)
                 .HasForeignKey(r => r.PatientID)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);
 
-            mb.Entity<Referal>()
+            mb.Entity<Referral>()
                 .HasOne(r => r.IssuingDoctor)
                 .WithMany(d => d.IssuedReferals)
                 .HasForeignKey(r => r.SpecialistDoctorID)
@@ -94,7 +94,7 @@ namespace MediLink_BackEnd.Data
                 .WithMany()
                 .UsingEntity(j => j.ToTable("CustomEventAttendees"));
 
-            mb.Entity<MedicalAsisstant>()
+            mb.Entity<MedicalAssistant>()
                 .HasMany(ma => ma.AttendingDoctors)
                 .WithMany(sd => sd.MedicalAsisstants);
             

@@ -46,7 +46,7 @@
         public PatientDataSheet DataSheet { get; set; }
         public List<SpecialistDoctor> SpecialistDoctors { get; set; } = new List<SpecialistDoctor>();
         public List<AppointmentRequest> Requests { get; set; } = new List<AppointmentRequest>();
-        public List<Referal> Referals { get; set; } = new List<Referal>();
+        public List<Referral> Referals { get; set; } = new List<Referral>();
     }
 
     public class SpecialistDoctor : User
@@ -54,12 +54,12 @@
         public int DataSheetID { get; set; }
         public MedicalStaffDataSheet DataSheet { get; set; }
         public List<Patient> Patients { get; set; } = new List<Patient>();
-        public List<MedicalAsisstant> MedicalAsisstants { get; set; }
-        public List<Referal> IssuedReferals { get; set; } = new List<Referal>();
+        public List<MedicalAssistant> MedicalAsisstants { get; set; }
+        public List<Referral> IssuedReferals { get; set; } = new List<Referral>();
         public List<AppointmentRequest> Requests { get; set; } = new List<AppointmentRequest>();
     }
      
-    public class MedicalAsisstant : User
+    public class MedicalAssistant : User
     {
         public List<SpecialistDoctor> AttendingDoctors { get; set; }
         public int DataSheetID { get; set; }

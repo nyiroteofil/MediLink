@@ -28,6 +28,7 @@ namespace MediLink_BackEnd.Data.DTOs
         public string FirstName { get; set; }
         public string DateOfBirth { get; set; }
         public char Sex { get; set; }
+        public List<int>? SpecialistDoctorIds { get; set; } = new List<int>();
         public string? Address { get; set; }
         public string? EmployeeID { get; set; }
         public string? Position { get; set; }

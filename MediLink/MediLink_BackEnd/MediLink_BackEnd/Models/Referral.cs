@@ -3,7 +3,7 @@ using System.ComponentModel.DataAnnotations;
 
 namespace MediLink_BackEnd.Models
 {
-    public class Referal
+    public class Referral
     {
         public int ID { get; set; }
         public int SpecialistDoctorID { get; set; }

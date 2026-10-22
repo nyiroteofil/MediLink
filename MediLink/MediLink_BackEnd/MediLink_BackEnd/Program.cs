@@ -1,5 +1,3 @@
-
-
 using MediLink_BackEnd.Services;
 using Microsoft.AspNetCore.Authentication.JwtBearer;
 using Microsoft.EntityFrameworkCore;
@@ -7,7 +5,7 @@ using Microsoft.IdentityModel.Tokens;
 using Microsoft.OpenApi.Models;
 using System.Text;
 using System.Text.Json.Serialization;
-using MediLink_BackEnd.Data;
+
 
 namespace MediLink_BackEnd
 {
@@ -80,7 +78,6 @@ namespace MediLink_BackEnd
             builder.Services.AddScoped<IUserService, UserService>();
             builder.Services.AddScoped<IAppointmentService, AppointmentService>();
             builder.Services.AddScoped<IInstitutionService, InstitutionService>();
-            builder.Services.AddScoped<IInfoService, InfoService>();
             builder.Services.AddScoped<IAdministratorService, AdministratorService>();
             builder.Services.AddScoped<IMessageService, MessageService>();
             builder.Services.AddTransient<IDbSeederService, DbSeederService>();

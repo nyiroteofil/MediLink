@@ -355,7 +355,7 @@ namespace MediLink_BackEnd.Migrations
                     b.ToTable("Messages");
                 });
 
-            modelBuilder.Entity("MediLink_BackEnd.Models.Referal", b =>
+            modelBuilder.Entity("MediLink_BackEnd.Models.Referral", b =>
                 {
                     b.Property<int>("ID")
                         .ValueGeneratedOnAdd()
@@ -470,7 +470,7 @@ namespace MediLink_BackEnd.Migrations
                     b.UseTptMappingStrategy();
                 });
 
-            modelBuilder.Entity("MedicalAsisstantSpecialistDoctor", b =>
+            modelBuilder.Entity("MedicalAssistantSpecialistDoctor", b =>
                 {
                     b.Property<int>("AttendingDoctorsID")
                         .HasColumnType("int");
@@ -482,7 +482,7 @@ namespace MediLink_BackEnd.Migrations
 
                     b.HasIndex("MedicalAsisstantsID");
 
-                    b.ToTable("MedicalAsisstantSpecialistDoctor");
+                    b.ToTable("MedicalAssistantSpecialistDoctor");
                 });
 
             modelBuilder.Entity("PatientSpecialistDoctor", b =>
@@ -597,7 +597,7 @@ namespace MediLink_BackEnd.Migrations
                     b.ToTable("Administrators");
                 });
 
-            modelBuilder.Entity("MediLink_BackEnd.Models.MedicalAsisstant", b =>
+            modelBuilder.Entity("MediLink_BackEnd.Models.MedicalAssistant", b =>
                 {
                     b.HasBaseType("MediLink_BackEnd.Models.User");
 
@@ -745,7 +745,7 @@ namespace MediLink_BackEnd.Migrations
                     b.Navigation("Sender");
                 });
 
-            modelBuilder.Entity("MediLink_BackEnd.Models.Referal", b =>
+            modelBuilder.Entity("MediLink_BackEnd.Models.Referral", b =>
                 {
                     b.HasOne("MediLink_BackEnd.Models.Diagnosis", "CauseDiagnosis")
                         .WithMany()
@@ -798,7 +798,7 @@ namespace MediLink_BackEnd.Migrations
                     b.Navigation("ContactInfo");
                 });
 
-            modelBuilder.Entity("MedicalAsisstantSpecialistDoctor", b =>
+            modelBuilder.Entity("MedicalAssistantSpecialistDoctor", b =>
                 {
                     b.HasOne("MediLink_BackEnd.Models.SpecialistDoctor", null)
                         .WithMany()
@@ -806,7 +806,7 @@ namespace MediLink_BackEnd.Migrations
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
-                    b.HasOne("MediLink_BackEnd.Models.MedicalAsisstant", null)
+                    b.HasOne("MediLink_BackEnd.Models.MedicalAssistant", null)
                         .WithMany()
                         .HasForeignKey("MedicalAsisstantsID")
                         .OnDelete(DeleteBehavior.ClientCascade)
@@ -937,7 +937,7 @@ namespace MediLink_BackEnd.Migrations
                     b.Navigation("DataSheet");
                 });
 
-            modelBuilder.Entity("MediLink_BackEnd.Models.MedicalAsisstant", b =>
+            modelBuilder.Entity("MediLink_BackEnd.Models.MedicalAssistant", b =>
                 {
                     b.HasOne("MediLink_BackEnd.Models.MedicalStaffDataSheet", "DataSheet")
                         .WithMany()
@@ -947,7 +947,7 @@ namespace MediLink_BackEnd.Migrations
 
                     b.HasOne("MediLink_BackEnd.Models.User", null)
                         .WithOne()
-                        .HasForeignKey("MediLink_BackEnd.Models.MedicalAsisstant", "ID")
+                        .HasForeignKey("MediLink_BackEnd.Models.MedicalAssistant", "ID")
                         .OnDelete(DeleteBehavior.Cascade)
                         .IsRequired();
 
