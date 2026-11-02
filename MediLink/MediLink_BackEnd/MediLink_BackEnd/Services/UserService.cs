@@ -1,4 +1,5 @@
-﻿using MediLink_BackEnd.Data; 
+﻿using System.Data;
+using MediLink_BackEnd.Data; 
 using MediLink_BackEnd.UtilityClasses;
 using MediLink_BackEnd.Data.DTOs;
 using MediLink_BackEnd.Models;
@@ -7,6 +8,7 @@ using Microsoft.IdentityModel.Tokens;
 using System.IdentityModel.Tokens.Jwt;
 using System.Security.Claims;
 using System.Text;
+using System.Text.RegularExpressions;
 
 namespace MediLink_BackEnd.Services
 {
@@ -192,33 +194,76 @@ namespace MediLink_BackEnd.Services
             }
             catch (Exception ex)
             {
-                _logger.LogError(ex, "Exception while trying to save Medical Assistant", assistantUser);
+                _logger.LogError(ex, "Exception while trying to save Medical Assistant ({User})", assistantUser);
                 throw;
             }
 
             return assistantUser;
+        }
+
+        
+        /*
+         * The function of this method is update one or more properties of the specific user's class
+         * the main question is how to go about this. If only one or a few and not all properties are changed
+         * means that there are null records in the dto. How shall I put that into the persistent DB record?
+         * 1. option:
+         *      I should fetch the users information on the fornt end, put it into the DTO with the modified
+         *      fields and send it back, before all the fields get to be UPDATED. This way the data that were not
+         *      meant to be updated stays unchanged and the intended change will be applied.
+         * 2. option:
+         *      I find a way to check what are the fields that the user wants to change and only assign value to those
+         *      (unlike in solution #1, as you assign even the unchanged values after fetching them.)
+         *      This seems the far more efficient way to do this, but I'm not sure how to check for the correct property.
+         *      I cannot iterate through properties and using 20+ if-else statements would constitute to horrible code.
+         */
+        public async Task<PatientUpdateDTO> PatchPatientUser(Patient trackedEntity, PatientUpdateDTO dto)
+        {
+            
+            // A series of checks for valid inputs inside DTO
+            if (!Regex.IsMatch(dto.Email, @"^([a-z]|[0-9])([a-z]|[0-9]|[_.])*@([a-z]|[0-9]|[_.])*\.[a-z]{2,4}$") ||
+                !Regex.IsMatch(dto.PhoneNumber, @"^(\+36|06)[0-9]{2}[0-6]{6}$")) throw new InvalidExpressionException("Invalid String Format");
+
+            try
+            {
+                trackedEntity.Username = dto.Username;
+                trackedEntity.DataSheet.Address = dto.Address;
+                trackedEntity.ContactInfo.Email = dto.Email;
+                trackedEntity.ContactInfo.PhoneNumber = dto.PhoneNumber;
+                
+                /*
+                 * An interesting observation as a learner, is that the entity, although passed by reference
+                 * is tracked properly due to the shared and properly scoped MediLinkContext
+                 */
+                await _dbContext.SaveChangesAsync();
+                return dto;
+            }
+            catch (Exception ex)
+            {
+                _logger.LogError("Exception while trying to patch Patient User ({Exception})", ex);
+                throw;
+            }
         }
         
         public async Task<List<UserSummaryDTO>> GetAllActiveAssistants()
         {
             try
             {
-                List<MedicalAssistant> asistants = await _dbContext.MedicalAsisstants
+                List<MedicalAssistant> assistants = await _dbContext.MedicalAsisstants
                     .Include(a => a.ContactInfo)
                     .Include(a => a.DataSheet)
                     .Where(a => a.Status == UserStatus.Active)
                     .ToListAsync(); ;
                 List<UserSummaryDTO> DTOs = new List<UserSummaryDTO>();
 
-                foreach (MedicalAssistant asistant in asistants)
+                foreach (MedicalAssistant assistant in assistants)
                 {
                     DTOs.Add(new UserSummaryDTO
                     {
-                        ID = asistant.ID,
-                        Username = asistant.Username,
-                        FullName = $"{asistant.DataSheet.FirstName} {asistant.DataSheet.LastName}",
-                        Role = asistant.Role,
-                        Status = asistant.Status,
+                        ID = assistant.ID,
+                        Username = assistant.Username,
+                        FullName = $"{assistant.DataSheet.FirstName} {assistant.DataSheet.LastName}",
+                        Role = assistant.Role,
+                        Status = assistant.Status,
                     });
                 }
 

@@ -29,8 +29,8 @@
     {
         public int ID { get; set; }
         public string Username { get; set; }
-        public string Password { get; set; } // The hashed password cannot be reversed, so it is safe to store it's bytes in plain text
-        public string PasswordSalt {  get; set; } // The salt is not reversable so it's safe to store it this way
+        public string Password { get; set; } // The hashed password cannot be reversed, so it is safe to store its bytes in plain text
+        public string PasswordSalt {  get; set; } // The salt is not reversible so it's safe to store it this way
         public UserRole Role { get; set; }
         public UserStatus Status { get; set; }
         public int ContactInfoID { get; set; }
@@ -46,7 +46,7 @@
         public PatientDataSheet DataSheet { get; set; }
         public List<SpecialistDoctor> SpecialistDoctors { get; set; } = new List<SpecialistDoctor>();
         public List<AppointmentRequest> Requests { get; set; } = new List<AppointmentRequest>();
-        public List<Referral> Referals { get; set; } = new List<Referral>();
+        public List<Referral> Referrals { get; set; } = new List<Referral>();
     }
 
     public class SpecialistDoctor : User

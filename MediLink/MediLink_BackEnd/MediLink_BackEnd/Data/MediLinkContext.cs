@@ -42,7 +42,7 @@ namespace MediLink_BackEnd.Data
             // Resolving cascade cycles and references to sub-class
             mb.Entity<Referral>()
                 .HasOne(r => r.Patient)
-                .WithMany(p => p.Referals)
+                .WithMany(p => p.Referrals)
                 .HasForeignKey(r => r.PatientID)
                 .IsRequired()
                 .OnDelete(DeleteBehavior.Restrict);

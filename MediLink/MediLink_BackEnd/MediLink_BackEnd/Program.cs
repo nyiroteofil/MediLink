@@ -14,6 +14,7 @@ namespace MediLink_BackEnd
         public async static Task Main(string[] args)
         {
             var builder = WebApplication.CreateBuilder(args);
+            
             // Learn more about configuring OpenAPI at https://aka.ms/aspnet/openapi
             builder.Services.AddOpenApi();
 

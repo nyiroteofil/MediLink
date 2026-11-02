@@ -1,11 +1,14 @@
 using System.Net;
 using System.Security.Claims;
+using Azure;
 using MediLink_BackEnd.Data;
 using MediLink_BackEnd.Data.DTOs;
 using MediLink_BackEnd.Models;
 using MediLink_BackEnd.Services;
 using Microsoft.AspNetCore.Authorization;
+using Microsoft.AspNetCore.JsonPatch;
 using Microsoft.AspNetCore.Mvc;
+using Microsoft.EntityFrameworkCore;
 
 namespace MediLink_BackEnd.Controllers;
 /*
@@ -21,11 +24,13 @@ public class UserController : Controller
 {
     private readonly MediLinkContext  _context;
     private readonly IUserService _userService;
+    private readonly ILogger<UserController> _logger;
     
-    public UserController(MediLinkContext context, IUserService userService) 
+    public UserController(MediLinkContext context, IUserService userService, ILogger<UserController> logger) 
     {
         _context = context;
         _userService = userService;
+        _logger = logger;
     }
        
     [AllowAnonymous]
@@ -103,6 +108,50 @@ public class UserController : Controller
         {
             Console.WriteLine(ex.ToString());
             return StatusCode(500, "\"An internal server error occurred.\"");
+        }
+    }
+
+    [Authorize(Roles = "Patient")]
+    [HttpPatch("{id}")]
+    public async Task<IActionResult> PatchPatient(int id, [FromBody] JsonPatchDocument<PatientUpdateDTO> patchDoc)
+    {
+        if (patchDoc == null) return BadRequest("Patch Document Missing!");
+
+        string requestingUserID = User.FindFirst(ClaimTypes.NameIdentifier).Value;
+
+        if (!int.TryParse(requestingUserID, out int intUserID)) return BadRequest("Invalid User Token!");
+        
+        
+        User requestingUser = await _context.Users.FirstOrDefaultAsync(u => u.ID == intUserID);
+        Patient targetUser = await _context.Patients
+            .Include(p => p.DataSheet)
+            .Include(p => p.ContactInfo)
+            .FirstOrDefaultAsync(p => p.ID == id);
+        
+        if (requestingUser == null) return NotFound("User ID that is contained in your token doesn't exist!");
+        if (targetUser == null) return NotFound($"User with {id} doesn't exist!");
+        if (requestingUser.Status == UserStatus.Suspended) return StatusCode(403, "Your account is suspended!");
+
+        try
+        {
+            PatientUpdateDTO dto = new PatientUpdateDTO
+            {
+                Username = targetUser.Username,
+                Address = targetUser.DataSheet.Address,
+                Email = targetUser.ContactInfo.Email,
+                PhoneNumber = targetUser.ContactInfo.PhoneNumber
+            };
+
+            patchDoc.ApplyTo(dto, ModelState);
+            if (!TryValidateModel(dto)) return BadRequest("Invalid Values!");
+            
+            PatientUpdateDTO result = await _userService.PatchPatientUser(targetUser, dto);
+            return Ok(result);
+        }
+        catch (Exception ex)
+        {
+            _logger.LogError(ex.ToString());
+            return StatusCode(500, "Internal server error occurred.");
         }
     }
     

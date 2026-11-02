@@ -1,5 +1,6 @@
 using MediLink_BackEnd.Data.DTOs;
 using MediLink_BackEnd.Models;
+using Microsoft.AspNetCore.JsonPatch;
 
 namespace MediLink_BackEnd.Services;
 
@@ -16,6 +17,7 @@ public interface IUserService
         public Task<int> GetDocAppointmentsWeekAhead(int docID);
         public Task<DateTime?> GetNextAppointmentDate(int suerID);
         public Task<int> DocActivePatientNumber(int docID);
+        public Task<PatientUpdateDTO> PatchPatientUser(Patient trackedEntity, PatientUpdateDTO dto);
     }
     
     public interface IAppointmentService
