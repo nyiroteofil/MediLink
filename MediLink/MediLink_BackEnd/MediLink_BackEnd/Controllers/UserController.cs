@@ -56,7 +56,6 @@ public class UserController : Controller
     // Next endpoints to add is:
     // - Modifying user information
     // - Seraching for specific doctors, asistnts or patients by id
-    // - removing user by id
     
     
     [HttpGet]
@@ -107,7 +106,7 @@ public class UserController : Controller
         catch (Exception ex)
         {
             Console.WriteLine(ex.ToString());
-            return StatusCode(500, "\"An internal server error occurred.\"");
+            return StatusCode(500, "An internal server error occurred.");
         }
     }
 
@@ -118,7 +117,7 @@ public class UserController : Controller
         if (patchDoc == null) return BadRequest("Patch Document Missing!");
 
         string requestingUserID = User.FindFirst(ClaimTypes.NameIdentifier).Value;
-
+        
         if (!int.TryParse(requestingUserID, out int intUserID)) return BadRequest("Invalid User Token!");
         
         
@@ -144,15 +143,52 @@ public class UserController : Controller
 
             patchDoc.ApplyTo(dto, ModelState);
             if (!TryValidateModel(dto)) return BadRequest("Invalid Values!");
+
+            // Here, I branched the execution depending on what role the
+            // user has as both need different evaluations for it to be safe.
+            // For the admin role, I'll make a separate controller, as that needs
+            // to have the ability for more extensive data modification by nature.
             
-            PatientUpdateDTO result = await _userService.PatchPatientUser(targetUser, dto);
-            return Ok(result);
+            string requesterRole = User.FindFirst(ClaimTypes.Role).Value;
+
+            if (string.IsNullOrEmpty(requesterRole))
+            {
+                return StatusCode(403, "Access Dennied! Missing role in Token.");
+            }
+            else if (requesterRole == "Patient")
+            {
+                if (intUserID == id)
+                {
+                    return Ok(_userService.PatchPatientUser(targetUser, dto));
+                }
+                else return StatusCode(403, "User ID mismatch! You're not authorized to modify this user's data!");
+            }
+            else if (requesterRole == "SpecialistDoctor")
+            {
+                SpecialistDoctor requestingDoctor = await _context.SpecialistDoctors
+                    .Include(sp => sp.Patients)
+                    .Where(sp => sp.ID == intUserID)
+                    .FirstOrDefaultAsync();
+
+                if (!requestingDoctor.Patients.Any(p => p.ID == id))
+                {
+                    return Ok(_userService.PatchPatientUser(targetUser, dto));
+                }
+                else
+                {
+                    return StatusCode(403, "You don't have a patient with that ID. You cannot modify this patient's data!");
+                }
+            }
         }
         catch (Exception ex)
         {
             _logger.LogError(ex.ToString());
-            return StatusCode(500, "Internal server error occurred.");
+            return StatusCode(500, "An internal server error occurred.");
         }
+        
+        // For some reason, the compiler says I missed a return statement.
+        // I'll fix this later
+        return StatusCode(500, "Unknown Error!");
     }
     
     [HttpPatch]

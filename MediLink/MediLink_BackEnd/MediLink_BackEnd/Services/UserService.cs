@@ -221,7 +221,7 @@ namespace MediLink_BackEnd.Services
             
             // A series of checks for valid inputs inside DTO
             if (!Regex.IsMatch(dto.Email, @"^([a-z]|[0-9])([a-z]|[0-9]|[_.])*@([a-z]|[0-9]|[_.])*\.[a-z]{2,4}$") ||
-                !Regex.IsMatch(dto.PhoneNumber, @"^(\+36|06)[0-9]{2}[0-6]{6}$")) throw new InvalidExpressionException("Invalid String Format");
+                !Regex.IsMatch(dto.PhoneNumber, @"^(\+36|06)[0-9]{2}[0-6]{6}$")) throw new InvalidExpressionException("Invalid Value Format");
 
             try
             {
@@ -231,7 +231,7 @@ namespace MediLink_BackEnd.Services
                 trackedEntity.ContactInfo.PhoneNumber = dto.PhoneNumber;
                 
                 /*
-                 * An interesting observation as a learner, is that the entity, although passed by reference
+                 * An interesting observation as a learner is that the entity, although passed by reference
                  * is tracked properly due to the shared and properly scoped MediLinkContext
                  */
                 await _dbContext.SaveChangesAsync();
